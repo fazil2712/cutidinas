@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:replace="~{layout :: layout(activeMenu='profile', content=~{::.page-content})}">
+    <div class="page-content">
+        <h1 class="page-title">My Profile</h1>
+        
+        <div th:if="${success}" style="background: #10b981; color: white; padding: 12px; border-radius: 6px; margin-bottom: 20px;" th:text="${success}"></div>
+        
+        <div class="card" style="max-width: 600px;">
+            <h3 class="card-title">Update Profile</h3>
+            <form th:action="@{/profile/update}" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Badge ID</label>
+                    <input type="text" class="form-control" th:value="${user.badgeid}" readonly style="background: #e2e8f0;">
+                </div>
+                <div class="form-group">
+                    <label>NIK</label>
+                    <input type="text" class="form-control" th:value="${user.nik}" readonly style="background: #e2e8f0;">
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" th:value="${user.name}" readonly style="background: #e2e8f0;">
+                </div>
+                <div class="form-group">
+                    <label>Unit Kerja</label>
+                    <input type="text" class="form-control" th:value="${user.unitKerja}" readonly style="background: #e2e8f0;">
+                </div>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e2e8f0;">
+                
+                <div class="form-group">
+                    <label>New Password (leave blank to keep current)</label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Profile Picture</label>
+                    <input type="file" name="file" class="form-control" accept="image/*">
+                    <div style="margin-top: 10px;" th:if="${user.profilePicture}">
+                        <img th:src="@{${user.profilePicture}}" alt="Current Photo" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Update Profile</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

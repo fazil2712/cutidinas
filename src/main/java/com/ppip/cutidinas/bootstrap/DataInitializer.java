@@ -24,6 +24,7 @@ public class DataInitializer implements CommandLineRunner {
         if (userRepository.count() == 0) {
             User admin = new User(
                     "000000",
+                    "3200000000000001",
                     "admin",
                     passwordEncoder.encode("admin"),
                     "IT",
@@ -37,6 +38,7 @@ public class DataInitializer implements CommandLineRunner {
             
             User user = new User(
                     "111111",
+                    "3200000000000002",
                     "user1",
                     passwordEncoder.encode("user"),
                     "HR",

@@ -96,6 +96,7 @@ public class AdminController {
         User existingUser = userRepository.findById(badgeid).orElse(null);
         if(existingUser != null) {
             existingUser.setName(updatedUser.getName());
+            existingUser.setNik(updatedUser.getNik());
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setUnitKerja(updatedUser.getUnitKerja());
             existingUser.setTahunMasuk(updatedUser.getTahunMasuk());

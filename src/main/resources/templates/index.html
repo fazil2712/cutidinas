@@ -4,221 +4,159 @@
 <div th:replace="~{layout :: layout(activeMenu='dashboard', content=~{::.page-content})}">
     <div class="page-content">
 
-        <!-- Page-scoped styles (rendered inside main-content, valid in HTML5) -->
         <style>
             /* Hero banner */
-            .dashboard-hero {
-                background: linear-gradient(135deg, #cfe4f8 0%, #daeaf9 60%, #e8f3fb 100%);
+            .portal-hero {
+                background: linear-gradient(135deg, #002B5E 0%, #004c97 70%, #d4b533 100%);
                 border-radius: 16px;
-                padding: 36px 40px;
-                margin-bottom: 28px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 24px;
-                overflow: hidden;
+                padding: 40px;
+                margin-bottom: 30px;
                 position: relative;
+                overflow: hidden;
+                color: white;
             }
 
-            .dashboard-hero::before {
+            .portal-hero::before {
                 content: '';
                 position: absolute;
-                top: -40px;
-                right: 160px;
-                width: 220px;
-                height: 220px;
-                background: rgba(255, 255, 255, 0.35);
+                top: -60px;
+                right: -60px;
+                width: 300px;
+                height: 300px;
+                background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
                 border-radius: 50%;
                 pointer-events: none;
             }
 
-            .hero-body { flex: 1; }
-
-            .hero-title {
-                font-size: 28px;
+            .portal-title {
+                font-size: 36px;
                 font-weight: 800;
-                color: #1a2e4a;
-                margin: 0 0 14px 0;
-                line-height: 1.25;
+                margin: 0 0 10px 0;
+                letter-spacing: 2px;
+                font-family: 'Inter', sans-serif;
             }
 
-            .hero-desc {
-                font-size: 14px;
-                color: #4a6080;
-                line-height: 1.7;
+            .portal-subtitle {
+                font-size: 16px;
+                opacity: 0.9;
                 margin: 0;
-                max-width: 560px;
             }
 
-            .hero-icon-wrap {
-                flex-shrink: 0;
-                width: 110px;
-                height: 110px;
-                background: linear-gradient(145deg, #004c97, #0a6abf);
-                border-radius: 22px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-shadow: 0 8px 24px rgba(0, 76, 151, 0.3);
-            }
-
-            .hero-icon-wrap svg { width: 70px; height: 70px; }
-
-            /* Sisa saldo highlight */
-            .saldo-badge {
-                display: inline-block;
-                background: #e0f2fe;
-                color: #0369a1;
+            .services-header {
+                font-size: 18px;
                 font-weight: 700;
-                padding: 4px 14px;
-                border-radius: 20px;
-                font-size: 14px;
+                color: #1a2e4a;
+                margin-bottom: 5px;
             }
 
-            /* Status badges */
-            .status-badge {
-                display: inline-block;
-                padding: 5px 14px;
-                border-radius: 6px;
+            .services-subheader {
                 font-size: 13px;
-                font-weight: 600;
+                color: #64748b;
+                margin-bottom: 25px;
             }
 
-            .status-pending   { background: #fef3c7; color: #92400e; }
-            .status-draft     { background: #f1f5f9; color: #475569; }
-            .status-approved  { background: #dcfce7; color: #166534; }
-            .status-rejected  { background: #fee2e2; color: #991b1b; }
-            .status-cancelled { background: #e2e8f0; color: #334155; }
+            .app-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 30px;
+            }
 
-            .table-responsive { overflow-x: auto; }
-
-            .empty-state {
+            .app-item {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                padding: 40px 20px;
-                color: #94a3b8;
-                gap: 12px;
-                font-size: 14px;
+                text-decoration: none;
+                width: 120px;
+                text-align: center;
+                transition: transform 0.2s;
             }
+
+            .app-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .app-icon {
+                width: 70px;
+                height: 70px;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 12px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            }
+
+            .app-icon svg {
+                width: 35px;
+                height: 35px;
+            }
+
+            .app-name {
+                font-size: 13px;
+                font-weight: 600;
+                color: #334155;
+                line-height: 1.3;
+            }
+
+            /* Icon Gradients */
+            .bg-cuti { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+            .bg-risk { background: linear-gradient(135deg, #f59e0b, #d97706); }
+            .bg-dokumen { background: linear-gradient(135deg, #10b981, #059669); }
+            .bg-dinas { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+
         </style>
 
         <!-- ===== HERO BANNER ===== -->
-        <div class="dashboard-hero">
-            <div class="hero-body">
-                <h1 class="hero-title">Selamat Datang di<br>Sistem Manajemen Absen</h1>
-                <p class="hero-desc">
-                    <strong>Sistem Manajemen Absen</strong> adalah sistem yang dibuat untuk mempermudah proses
-                    pengajuan cuti karyawan di Dana Pensiun PPIP-PUSRI. Melalui sistem ini karyawan dapat dengan
-                    mudah melakukan pengajuan cuti.
-                </p>
-            </div>
-            <div class="hero-icon-wrap">
-                <!-- Calendar / approval icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
-                    <rect width="80" height="80" rx="18" fill="white" fill-opacity="0.15"/>
-                    <rect x="14" y="22" width="52" height="42" rx="6" fill="white" fill-opacity="0.9"/>
-                    <rect x="14" y="22" width="52" height="16" rx="6" fill="#004c97"/>
-                    <rect x="14" y="30" width="52" height="8" fill="#004c97"/>
-                    <rect x="26" y="16" width="5" height="12" rx="2.5" fill="#004c97"/>
-                    <rect x="49" y="16" width="5" height="12" rx="2.5" fill="#004c97"/>
-                    <circle cx="40" cy="52" r="10" fill="#004c97" fill-opacity="0.12"/>
-                    <polyline points="34,52 38,57 47,46" stroke="#004c97" stroke-width="3"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
+        <div class="portal-hero">
+            <h1 class="portal-title">DAPEN PPIP</h1>
+            <p class="portal-subtitle">Aplikasi Digitalisasi Dana Pensiun PPIP-PUSRI</p>
         </div>
 
-        <!-- ===== SALDO ABSEN ===== -->
-        <div class="card">
-            <h3 class="card-title">
-                Saldo Absen Anda Tahun <span th:text="${tahun}">2026</span>
-            </h3>
+        <!-- ===== SMART SERVICES ===== -->
+        <h2 class="services-header">Smart Services</h2>
+        <p class="services-subheader">Aplikasi penunjang pekerjaan karyawan</p>
 
-            <div th:if="${saldoList != null and !saldoList.isEmpty()}">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Jenis Absen</th>
-                                <th>Periode</th>
-                                <th>Total Kuota</th>
-                                <th>Kuota Terpakai</th>
-                                <th>Kuota Pending</th>
-                                <th>Sisa Saldo</th>
-                                <th>Valid Mulai</th>
-                                <th>Valid Hingga</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="saldo : ${saldoList}">
-                                <td th:text="${saldo.jenisCuti}">-</td>
-                                <td th:text="${saldo.periode}">-</td>
-                                <td th:text="${saldo.totalKuota}">0</td>
-                                <td th:text="${saldo.kuotaTerpakai}">0</td>
-                                <td th:text="${saldo.kuotaPending}">0</td>
-                                <td>
-                                    <span class="saldo-badge" th:text="${saldo.sisaSaldo}">0</span>
-                                </td>
-                                <td th:text="${saldo.validMulai}">-</td>
-                                <td th:text="${saldo.validHingga}">-</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="app-grid">
+            
+            <a th:href="@{/cuti}" class="app-item">
+                <div class="app-icon bg-cuti">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
                 </div>
-            </div>
+                <div class="app-name">Sistem Manajemen Cuti</div>
+            </a>
 
-            <div th:if="${saldoList == null or saldoList.isEmpty()}" class="empty-state">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                     fill="none" stroke="#cbd5e1" stroke-width="1.5"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-                <p>Tidak ada data saldo absen untuk tahun ini.</p>
-            </div>
+            <a th:href="@{https://riskppip.app}" class="app-item">
+                <div class="app-icon bg-risk">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <div class="app-name">Risk Management App</div>
+            </a>
+
+            <a th:href="@{https://gdpp.me}" class="app-item">
+                <div class="app-icon bg-dokumen">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                </div>
+                <div class="app-name">Katalog Dokumen</div>
+            </a>
+
+            <a th:href="@{#}" class="app-item">
+                <div class="app-icon bg-dinas">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <div class="app-name">Sistem Manajemen Dinas</div>
+            </a>
+
         </div>
 
-        <!-- ===== PENGERTIAN STATUS ===== -->
-        <div class="card">
-            <h3 class="card-title">Pengertian Status pada Sistem Manajemen Absen</h3>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th style="width: 220px;">Status</th>
-                            <th>Keterangan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="status-badge status-pending">Menunggu Persetujuan</span></td>
-                            <td>Pengajuan Absen telah diajukan dan menunggu di approve oleh atasan</td>
-                        </tr>
-                        <tr>
-                            <td><span class="status-badge status-draft">Tersimpan</span></td>
-                            <td>Pengajuan Absen belum diajukan secara resmi kepada atasan</td>
-                        </tr>
-                        <tr>
-                            <td><span class="status-badge status-approved">Disetujui</span></td>
-                            <td>Pengajuan Absen sudah di Setujui oleh atasan</td>
-                        </tr>
-                        <tr>
-                            <td><span class="status-badge status-rejected">Ditolak</span></td>
-                            <td>Pengajuan Absen sudah Ditolak oleh atasan</td>
-                        </tr>
-                        <tr>
-                            <td><span class="status-badge status-cancelled">Dibatalkan</span></td>
-                            <td>Pengajuan Absen dibatalkan oleh Pengaju</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    </div><!-- /.page-content -->
+    </div>
 </div>
 </body>
 </html>

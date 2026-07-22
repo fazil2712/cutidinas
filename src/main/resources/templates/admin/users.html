@@ -20,6 +20,10 @@
                             <input type="text" class="form-control" th:field="*{badgeid}" required>
                         </div>
                         <div class="form-group">
+                            <label>NIK</label>
+                            <input type="text" class="form-control" th:field="*{nik}" required>
+                        </div>
+                        <div class="form-group">
                             <label>Full Name (Nama)</label>
                             <input type="text" class="form-control" th:field="*{name}" required>
                         </div>
@@ -69,6 +73,7 @@
                 <thead>
                     <tr>
                         <th>Badge ID</th>
+                        <th>NIK</th>
                         <th>Name</th>
                         <th>Role</th>
                         <th>Unit Kerja</th>
@@ -79,6 +84,7 @@
                 <tbody>
                     <tr th:each="u : ${users}">
                         <td th:text="${u.badgeid}"></td>
+                        <td th:text="${u.nik}"></td>
                         <td th:text="${u.name}"></td>
                         <td>
                             <span class="badge-role" th:text="${#lists.contains(u.permissions, 'ROLE_ADMIN') ? 'ADMIN' : 'USER'}"></span>
@@ -120,8 +126,8 @@
                         <td th:text="${c.badgeid}"></td>
                         <td th:text="${c.jenis}"></td>
                         <td th:text="${c.periode}"></td>
-                        <td th:text="${c.totalHari}"></td>
-                        <td th:text="${c.sisaHari}"></td>
+                        <td th:text="${c.totalHari} + (${c.jenis == 'Cuti Besar'} ? ' hari kalender' : ' hari kerja')"></td>
+                        <td th:text="${c.sisaHari} + (${c.jenis == 'Cuti Besar'} ? ' hari kalender' : ' hari kerja')"></td>
                         <td th:text="${c.tanggalMulai}"></td>
                         <td th:text="${c.tanggalAkhir}"></td>
                         <td>

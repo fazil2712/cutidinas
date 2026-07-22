@@ -23,9 +23,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class User {
     @Id
-    @Column(name = "badgeid")
+    @Column(unique = true, nullable = false)
     private String badgeid;
     
+    private String nik;
     private String name;
     private String password;
     private String unitKerja;
