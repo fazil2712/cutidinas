@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:replace="~{layout :: layout(activeMenu='admin', content=~{::.page-content})}">
+    <div class="page-content">
+        <h1 class="page-title">Edit Cuti Record</h1>
+        <div class="card">
+            <h3 class="card-title">Update Cuti Details</h3>
+            <form th:action="@{/admin/cuti/edit/{id}(id=${cuti.id})}" method="post" th:object="${cuti}">
+                <div class="flex-row">
+                    <div class="flex-col">
+                        <div class="form-group">
+                            <label>Badge ID (Readonly)</label>
+                            <input type="text" class="form-control" th:field="*{badgeid}" readonly style="background: #e2e8f0;">
+                        </div>
+                        <div class="form-group">
+                            <label>Jenis</label>
+                            <select class="form-control" th:field="*{jenis}">
+                                <option value="Cuti Kecil">Cuti Kecil</option>
+                                <option value="Cuti Besar">Cuti Besar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Periode</label>
+                            <input type="number" class="form-control" th:field="*{periode}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-col">
+                        <div class="form-group">
+                            <label>Tanggal Mulai</label>
+                            <input type="date" class="form-control" th:field="*{tanggalMulai}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Akhir</label>
+                            <input type="date" class="form-control" th:field="*{tanggalAkhir}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Total Hari</label>
+                            <input type="number" class="form-control" th:field="*{totalHari}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sisa Hari</label>
+                            <input type="number" class="form-control" th:field="*{sisaHari}" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="margin-top: 15px;">SAVE CHANGES</button>
+                <a th:href="@{/admin/users}" class="btn" style="background: #e2e8f0; color: #333; margin-left: 10px; text-decoration: none;">CANCEL</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

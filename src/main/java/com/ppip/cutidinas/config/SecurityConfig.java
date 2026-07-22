@@ -8,9 +8,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.ppip.cutidinas.security.CustomAuthenticationSuccessHandler;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private final CustomAuthenticationSuccessHandler successHandler;
+
+    public SecurityConfig(CustomAuthenticationSuccessHandler successHandler) {
+        this.successHandler = successHandler;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -21,7 +29,7 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/login")
-                .defaultSuccessUrl("/", true)
+                .successHandler(successHandler)
                 .permitAll()
             )
             .logout(logout -> logout

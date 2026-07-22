@@ -2,6 +2,7 @@ package com.ppip.cutidinas.bootstrap;
 
 import com.ppip.cutidinas.model.User;
 import com.ppip.cutidinas.repository.UserRepository;
+import com.ppip.cutidinas.service.CutiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +17,7 @@ public class DataInitializer implements CommandLineRunner {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CutiService cutiService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -31,6 +33,7 @@ public class DataInitializer implements CommandLineRunner {
                     Arrays.asList("ROLE_ADMIN", "ROLE_USER")
             );
             userRepository.save(admin);
+            cutiService.generateCutiIfNeeded(admin);
             
             User user = new User(
                     "111111",
@@ -43,6 +46,7 @@ public class DataInitializer implements CommandLineRunner {
                     Arrays.asList("ROLE_USER")
             );
             userRepository.save(user);
+            cutiService.generateCutiIfNeeded(user);
             System.out.println("==========================================================");
             System.out.println("Default users created!");
             System.out.println("Login as Admin:    Username = 000000 or 'admin',    Password = admin");

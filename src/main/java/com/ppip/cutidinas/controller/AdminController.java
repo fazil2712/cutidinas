@@ -1,7 +1,10 @@
 package com.ppip.cutidinas.controller;
 
 import com.ppip.cutidinas.model.User;
+import com.ppip.cutidinas.model.Cuti;
 import com.ppip.cutidinas.repository.UserRepository;
+import com.ppip.cutidinas.repository.CutiRepository;
+import com.ppip.cutidinas.service.CutiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -24,6 +27,8 @@ public class AdminController {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CutiRepository cutiRepository;
+    private final CutiService cutiService;
 
     // Define the upload directory inside static so it can be served directly
     private static final String UPLOAD_DIR = "src/main/resources/static/uploads/";
@@ -32,6 +37,7 @@ public class AdminController {
     public String listUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("newUser", new User());
+        model.addAttribute("cutis", cutiRepository.findAll());
         return "admin/users";
     }
 
@@ -65,6 +71,7 @@ public class AdminController {
         }
 
         userRepository.save(user);
+        cutiService.generateCutiIfNeeded(user);
         redirectAttributes.addFlashAttribute("success", "User created successfully!");
         return "redirect:/admin/users";
     }
@@ -122,6 +129,41 @@ public class AdminController {
     public String deleteUser(@PathVariable("id") String badgeid, RedirectAttributes redirectAttributes) {
         userRepository.deleteById(badgeid);
         redirectAttributes.addFlashAttribute("success", "User deleted successfully!");
+        return "redirect:/admin/users";
+    }
+
+    @GetMapping("/cuti/edit/{id}")
+    public String editCutiForm(@PathVariable("id") Long id, Model model) {
+        Cuti cuti = cutiRepository.findById(id).orElse(null);
+        if(cuti != null) {
+            model.addAttribute("cuti", cuti);
+            return "admin/edit-cuti";
+        }
+        return "redirect:/admin/users";
+    }
+
+    @PostMapping("/cuti/edit/{id}")
+    public String updateCuti(@PathVariable("id") Long id, 
+                             @ModelAttribute("cuti") Cuti updatedCuti, 
+                             RedirectAttributes redirectAttributes) {
+        Cuti existing = cutiRepository.findById(id).orElse(null);
+        if(existing != null) {
+            existing.setJenis(updatedCuti.getJenis());
+            existing.setPeriode(updatedCuti.getPeriode());
+            existing.setTanggalMulai(updatedCuti.getTanggalMulai());
+            existing.setTanggalAkhir(updatedCuti.getTanggalAkhir());
+            existing.setTotalHari(updatedCuti.getTotalHari());
+            existing.setSisaHari(updatedCuti.getSisaHari());
+            cutiRepository.save(existing);
+            redirectAttributes.addFlashAttribute("success", "Cuti record updated successfully!");
+        }
+        return "redirect:/admin/users";
+    }
+
+    @PostMapping("/cuti/delete/{id}")
+    public String deleteCuti(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+        cutiRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("success", "Cuti record deleted successfully!");
         return "redirect:/admin/users";
     }
 }
