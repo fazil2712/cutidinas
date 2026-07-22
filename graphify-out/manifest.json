@@ -1,0 +1,137 @@
+{
+  "D:\\WORK\\PPIP\\cutidinas\\mvnw": {
+    "mtime": 1784599774.0,
+    "ast_hash": "ab50dd89da7da2346b28003352eeeeeb",
+    "semantic_hash": "ab50dd89da7da2346b28003352eeeeeb"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\.github\\modernize\\java-upgrade\\hooks\\scripts\\recordToolUse.ps1": {
+    "mtime": 1784625099.290631,
+    "ast_hash": "9ecf230451dfd20ff4e0a2a01e80a4e6",
+    "semantic_hash": "9ecf230451dfd20ff4e0a2a01e80a4e6"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\.github\\modernize\\java-upgrade\\hooks\\scripts\\recordToolUse.sh": {
+    "mtime": 1784625099.3210063,
+    "ast_hash": "e25ae501603ce6bf738198f5ce32ba83",
+    "semantic_hash": "e25ae501603ce6bf738198f5ce32ba83"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\CutidinasApplication.java": {
+    "mtime": 1784599774.0,
+    "ast_hash": "9c3ecd4dad032d7cb6a69518a312ced2",
+    "semantic_hash": "9c3ecd4dad032d7cb6a69518a312ced2"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\bootstrap\\DataInitializer.java": {
+    "mtime": 1784688717.1882877,
+    "ast_hash": "97a00e94fe7a1f5106fd47c0b0cc19b2",
+    "semantic_hash": "97a00e94fe7a1f5106fd47c0b0cc19b2"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\config\\SecurityConfig.java": {
+    "mtime": 1784689085.1724112,
+    "ast_hash": "cf27716e97ee74e69bfb74c8c995bf9d",
+    "semantic_hash": "cf27716e97ee74e69bfb74c8c995bf9d"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\controller\\AdminController.java": {
+    "mtime": 1784689074.5999968,
+    "ast_hash": "cf064631829fadd559ed1244f5948e5f",
+    "semantic_hash": "cf064631829fadd559ed1244f5948e5f"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\controller\\LoginController.java": {
+    "mtime": 1784683534.4424546,
+    "ast_hash": "163d1920e5c198b07a589328e863d57a",
+    "semantic_hash": "163d1920e5c198b07a589328e863d57a"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\model\\Cuti.java": {
+    "mtime": 1784625001.4973285,
+    "ast_hash": "96281ea6402c4a3cc84ca736a42c6b77",
+    "semantic_hash": "96281ea6402c4a3cc84ca736a42c6b77"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\model\\PengajuanCuti.java": {
+    "mtime": 1784625001.7040398,
+    "ast_hash": "33778969ee2e25fc19d7a3a57b7e2d03",
+    "semantic_hash": "33778969ee2e25fc19d7a3a57b7e2d03"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\model\\User.java": {
+    "mtime": 1784625001.3033967,
+    "ast_hash": "d21415be05a40fda15ceb65c4cbf3e25",
+    "semantic_hash": "d21415be05a40fda15ceb65c4cbf3e25"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\repository\\CutiRepository.java": {
+    "mtime": 1784625011.942243,
+    "ast_hash": "138e2756f274bbdea8b2ee1ae2fa51c6",
+    "semantic_hash": "138e2756f274bbdea8b2ee1ae2fa51c6"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\repository\\PengajuanCutiRepository.java": {
+    "mtime": 1784625012.1161206,
+    "ast_hash": "c455039620c2594d3d5432429fb00c61",
+    "semantic_hash": "c455039620c2594d3d5432429fb00c61"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\repository\\UserRepository.java": {
+    "mtime": 1784683518.8246622,
+    "ast_hash": "7eed56b07e0a2be0ae97bd6a20fa17bc",
+    "semantic_hash": "7eed56b07e0a2be0ae97bd6a20fa17bc"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\security\\CustomUserDetails.java": {
+    "mtime": 1784688982.4678137,
+    "ast_hash": "f7b0b1d6904c9d554aa38ba23aaedcf3",
+    "semantic_hash": "f7b0b1d6904c9d554aa38ba23aaedcf3"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\java\\com\\ppip\\cutidinas\\security\\CustomUserDetailsService.java": {
+    "mtime": 1784688982.7142303,
+    "ast_hash": "4fe80f54b56eca45afe9c6beb7c2fc91",
+    "semantic_hash": "4fe80f54b56eca45afe9c6beb7c2fc91"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\test\\java\\com\\ppip\\cutidinas\\CutidinasApplicationTests.java": {
+    "mtime": 1784599774.0,
+    "ast_hash": "d3036b876e53bb94e8be750b13a607ac",
+    "semantic_hash": "d3036b876e53bb94e8be750b13a607ac"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\.agents\\rules\\graphify.md": {
+    "mtime": 1784689234.3206296,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\.agents\\workflows\\graphify.md": {
+    "mtime": 1784689234.3227804,
+    "ast_hash": "84de69efd46ab0b8430393bd4188f8f2",
+    "semantic_hash": "84de69efd46ab0b8430393bd4188f8f2"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\reference\\sidebar-fragment.html": {
+    "mtime": 1784532559.0326598,
+    "ast_hash": "58d279896f38d2c005365c55c452950e",
+    "semantic_hash": "58d279896f38d2c005365c55c452950e"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\resources\\templates\\index.html": {
+    "mtime": 1784688472.7047203,
+    "ast_hash": "e2fab1f0021151eae0cf363cc40a502a",
+    "semantic_hash": "e2fab1f0021151eae0cf363cc40a502a"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\resources\\templates\\layout.html": {
+    "mtime": 1784689031.6790872,
+    "ast_hash": "ee5bd15e4246e2bb4865c12148f95bf3",
+    "semantic_hash": "ee5bd15e4246e2bb4865c12148f95bf3"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\resources\\templates\\login.html": {
+    "mtime": 1784532559.0292735,
+    "ast_hash": "be3b4fb71b8a55e553a6865eb18e6e31",
+    "semantic_hash": "be3b4fb71b8a55e553a6865eb18e6e31"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\resources\\templates\\admin\\edit.html": {
+    "mtime": 1784689075.0362983,
+    "ast_hash": "cb447c3686e6036718fef14cfe8a33d1",
+    "semantic_hash": "cb447c3686e6036718fef14cfe8a33d1"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\resources\\templates\\admin\\users.html": {
+    "mtime": 1784689074.7896698,
+    "ast_hash": "350345ab2ffd859e5a5a31f87d472f71",
+    "semantic_hash": "350345ab2ffd859e5a5a31f87d472f71"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\resources\\templates\\fragments\\sidebar.html": {
+    "mtime": 1784689031.362037,
+    "ast_hash": "d1243ee92dba752a4acfaa2155562613",
+    "semantic_hash": "d1243ee92dba752a4acfaa2155562613"
+  },
+  "D:\\WORK\\PPIP\\cutidinas\\src\\main\\resources\\static\\img\\Gemini_Generated_Image_eu5nwveu5nwveu5n.png": {
+    "mtime": 1783569415.2022803,
+    "ast_hash": "1317fe9e874c8606f6b2bffe5547a9c7",
+    "semantic_hash": "1317fe9e874c8606f6b2bffe5547a9c7"
+  }
+}

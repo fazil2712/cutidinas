@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -26,10 +28,11 @@ public class User {
     
     private String name;
     private String password;
-    private String departement;
+    private String unitKerja;
     private String email;
     private String profilePicture;
-    private Integer tahunMasuk;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate tahunMasuk;
     
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_badgeid"))

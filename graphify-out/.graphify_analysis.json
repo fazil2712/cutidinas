@@ -1,0 +1,298 @@
+{
+  "communities": {
+    "0": [
+      "security_customuserdetails_customuserdetails",
+      "security_customuserdetails_customuserdetails_customuserdetails",
+      "security_customuserdetails_customuserdetails_getauthorities",
+      "security_customuserdetails_customuserdetails_getfotoprofil",
+      "security_customuserdetails_customuserdetails_getfullname",
+      "security_customuserdetails_customuserdetails_getrolename",
+      "security_customuserdetails_customuserdetails_getuser",
+      "security_customuserdetails_customuserdetails_isaccountnonexpired",
+      "security_customuserdetails_customuserdetails_isaccountnonlocked",
+      "security_customuserdetails_customuserdetails_iscredentialsnonexpired",
+      "security_customuserdetails_customuserdetails_isenabled",
+      "src_main_java_com_ppip_cutidinas_security_customuserdetails_java",
+      "userdetails"
+    ],
+    "1": [
+      "controller_admincontroller_admincontroller",
+      "controller_admincontroller_admincontroller_adduser",
+      "controller_admincontroller_admincontroller_deleteuser",
+      "controller_admincontroller_admincontroller_edituserform",
+      "controller_admincontroller_admincontroller_listusers",
+      "controller_admincontroller_admincontroller_updateuser",
+      "security_customuserdetails_customuserdetails_getbadgeid",
+      "security_customuserdetails_customuserdetails_getpassword",
+      "security_customuserdetails_customuserdetails_getusername",
+      "src_main_java_com_ppip_cutidinas_controller_admincontroller_java"
+    ],
+    "2": [
+      "bootstrap_datainitializer_datainitializer",
+      "bootstrap_datainitializer_datainitializer_run",
+      "commandlinerunner",
+      "cutidinas_cutidinasapplication_cutidinasapplication",
+      "cutidinas_cutidinasapplication_cutidinasapplication_main",
+      "src_main_java_com_ppip_cutidinas_bootstrap_datainitializer_java",
+      "src_main_java_com_ppip_cutidinas_cutidinasapplication_java"
+    ],
+    "3": [
+      "admincontroller_class",
+      "cuti_model",
+      "cutirepository_interface",
+      "datainitializer_class",
+      "pengajuancuti_model",
+      "pengajuancutirepository_interface",
+      "user_model"
+    ],
+    "4": [
+      "repository_userrepository_userrepository",
+      "repository_userrepository_userrepository_findbybadgeidorname",
+      "security_customuserdetailsservice_customuserdetailsservice",
+      "security_customuserdetailsservice_customuserdetailsservice_loaduserbyusername",
+      "src_main_java_com_ppip_cutidinas_repository_userrepository_java",
+      "src_main_java_com_ppip_cutidinas_security_customuserdetailsservice_java",
+      "userdetailsservice"
+    ],
+    "5": [
+      "admin_edit_template",
+      "admin_users_template",
+      "layout_template",
+      "sidebar_fragment",
+      "sidebar_fragment_ref"
+    ],
+    "6": [
+      "config_securityconfig_securityconfig",
+      "config_securityconfig_securityconfig_passwordencoder",
+      "config_securityconfig_securityconfig_securityfilterchain",
+      "src_main_java_com_ppip_cutidinas_config_securityconfig_java"
+    ],
+    "7": [
+      "controller_logincontroller_logincontroller",
+      "controller_logincontroller_logincontroller_home",
+      "controller_logincontroller_logincontroller_login",
+      "src_main_java_com_ppip_cutidinas_controller_logincontroller_java"
+    ],
+    "8": [
+      "custom_user_details",
+      "custom_user_details_service",
+      "user_repository"
+    ],
+    "9": [
+      "cutidinas_cutidinasapplicationtests_cutidinasapplicationtests",
+      "cutidinas_cutidinasapplicationtests_cutidinasapplicationtests_contextloads",
+      "src_test_java_com_ppip_cutidinas_cutidinasapplicationtests_java"
+    ],
+    "10": [
+      "model_cuti_cuti",
+      "src_main_java_com_ppip_cutidinas_model_cuti_java"
+    ],
+    "11": [
+      "recordtooluse_ps1_script",
+      "recordtooluse_sh_script"
+    ],
+    "12": [
+      "repository_cutirepository_cutirepository",
+      "src_main_java_com_ppip_cutidinas_repository_cutirepository_java"
+    ],
+    "13": [
+      "model_pengajuancuti_pengajuancuti",
+      "src_main_java_com_ppip_cutidinas_model_pengajuancuti_java"
+    ],
+    "14": [
+      "model_user_user",
+      "src_main_java_com_ppip_cutidinas_model_user_java"
+    ],
+    "15": [
+      "repository_pengajuancutirepository_pengajuancutirepository",
+      "src_main_java_com_ppip_cutidinas_repository_pengajuancutirepository_java"
+    ],
+    "16": [
+      "github_modernize_java_upgrade_hooks_scripts_recordtooluse_ps1"
+    ],
+    "17": [
+      "github_modernize_java_upgrade_hooks_scripts_recordtooluse_sh"
+    ],
+    "18": [
+      "mvnw_maven_wrapper"
+    ],
+    "19": [
+      "cutidinasapplication_class"
+    ],
+    "20": [
+      "securityconfig_class"
+    ],
+    "21": [
+      "logincontroller_class"
+    ],
+    "22": [
+      "cutidinas_application_tests"
+    ],
+    "23": [
+      "graphify_rule"
+    ],
+    "24": [
+      "graphify_workflow"
+    ],
+    "25": [
+      "index_template"
+    ],
+    "26": [
+      "login_template"
+    ],
+    "27": [
+      "gemini_generated_image_logo"
+    ]
+  },
+  "cohesion": {
+    "0": 0.16666666666666666,
+    "1": 0.2222222222222222,
+    "2": 0.3333333333333333,
+    "3": 0.3333333333333333,
+    "4": 0.3333333333333333,
+    "5": 0.4,
+    "6": 0.5,
+    "7": 0.5,
+    "8": 0.6666666666666666,
+    "9": 0.6666666666666666,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0
+  },
+  "gods": [
+    {
+      "id": "security_customuserdetails_customuserdetails",
+      "label": "CustomUserDetails",
+      "degree": 15
+    },
+    {
+      "id": "controller_admincontroller_admincontroller",
+      "label": "AdminController",
+      "degree": 6
+    },
+    {
+      "id": "bootstrap_datainitializer_datainitializer",
+      "label": "DataInitializer",
+      "degree": 3
+    },
+    {
+      "id": "config_securityconfig_securityconfig",
+      "label": "SecurityConfig",
+      "degree": 3
+    },
+    {
+      "id": "controller_logincontroller_logincontroller",
+      "label": "LoginController",
+      "degree": 3
+    },
+    {
+      "id": "security_customuserdetailsservice_customuserdetailsservice",
+      "label": "CustomUserDetailsService",
+      "degree": 3
+    },
+    {
+      "id": "cuti_model",
+      "label": "Cuti",
+      "degree": 3
+    },
+    {
+      "id": "user_model",
+      "label": "User",
+      "degree": 3
+    },
+    {
+      "id": "layout_template",
+      "label": "Layout Template",
+      "degree": 3
+    },
+    {
+      "id": "cutidinas_cutidinasapplication_cutidinasapplication",
+      "label": "CutidinasApplication",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Sidebar Fragment",
+      "target": "Sidebar Fragment (Ref)",
+      "source_files": [
+        "src/main/resources/templates/fragments/sidebar.html",
+        "reference/sidebar-fragment.html"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "RecordToolUse Shell Script",
+      "target": "RecordToolUse PowerShell Script",
+      "source_files": [
+        ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.sh",
+        ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.ps1"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "AdminController",
+      "target": "DataInitializer",
+      "source_files": [
+        "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+        "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "DataInitializer",
+      "target": "User",
+      "source_files": [
+        "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+        "src/main/java/com/ppip/cutidinas/model/User.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "AdminController",
+      "target": "User",
+      "source_files": [
+        "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+        "src/main/java/com/ppip/cutidinas/model/User.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `CustomUserDetails` connect `Community 0` to `Community 1`?",
+      "why": "High betweenness centrality (0.090) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `Cuti`, `PengajuanCuti`, `User` to the rest of the system?",
+      "why": "23 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><link rel="icon" type="image/png" href="/img/Gemini_Generated_Image_eu5nwveu5nwveu5n.png">
+    <meta charset="UTF-8">
+    <title>Dana Pensiun PPIP-PUSRI - Login</title>
+    <!-- Modern typography to make it look premium while keeping the reference layout -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #004c97;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            /* Simulating the building background exactly as referenced */
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: var(--font-family);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 76, 151, 0.4);
+            z-index: 1;
+        }
+
+        .login-container {
+            z-index: 2;
+            width: 400px;
+            padding: 40px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95); /* Glass panel fallback */
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .login-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            border-radius: 12px 12px 0 0;
+            margin: -40px -40px 30px -40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-header h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .login-title {
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .btn-primary:hover {
+            background-color: #003870;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-block {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .top-brand {
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            z-index: 2; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            background: rgba(255,255,255,0.95); 
+            padding: 12px 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .alert-error {
+            color: white; 
+            background: #dc3545; 
+            padding: 12px; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            font-size: 14px;
+        }
+        
+        .alert-success {
+            color: white; 
+            background: #28a745; 
+            padding: 12px; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <!-- Top Left Branding -->
+    <div class="top-brand">
+        <img th:src="@{/img/Gemini_Generated_Image_eu5nwveu5nwveu5n.png}" alt="Logo" style="width: 40px; height: auto;">
+        <div style="font-weight: 700; color: var(--primary-blue); font-size: 16px; line-height: 1.3;">
+            Dana Pensiun<br>PPIP-PUSRI
+        </div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h3>Dana Pensiun PPIP-PUSRI</h3>
+        </div>
+        
+        <h2 class="login-title">Login</h2>
+        
+        <!-- Spring Security Error/Logout handling mapped properly -->
+        <div th:if="${param.error}" class="alert-error">
+            <span th:if="${session['SPRING_SECURITY_LAST_EXCEPTION'] != null and session['SPRING_SECURITY_LAST_EXCEPTION'].message.contains('User not found')}">Akun tidak terdaftar, hubungi admin</span>
+            <span th:unless="${session['SPRING_SECURITY_LAST_EXCEPTION'] != null and session['SPRING_SECURITY_LAST_EXCEPTION'].message.contains('User not found')}">Password salah</span>
+        </div>
+        <div th:if="${param.logout}" class="alert-success">
+            Anda telah berhasil logout.
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Badge ID atau Nama Lengkap" required autofocus autocomplete="username" aria-label="Username">
+            </div>
+            
+            <!-- Removed the Role <select> block as requested -->
+            
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="••••••••" required autocomplete="current-password" aria-label="Password">
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="remember" name="remember-me">
+                <label for="remember">Remember Me</label>
+            </div>
+            
+            <button type="submit" class="btn-primary btn-block">Login</button>
+        </form>
+    </div>
+</body>
+</html>

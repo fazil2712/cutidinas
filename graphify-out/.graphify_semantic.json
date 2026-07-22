@@ -1,0 +1,474 @@
+{
+  "nodes": [
+    {
+      "id": "mvnw_maven_wrapper",
+      "label": "Maven Wrapper Script",
+      "file_type": "code",
+      "source_file": "mvnw",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "recordtooluse_ps1_script",
+      "label": "RecordToolUse PowerShell Script",
+      "file_type": "code",
+      "source_file": ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.ps1",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "recordtooluse_sh_script",
+      "label": "RecordToolUse Shell Script",
+      "file_type": "code",
+      "source_file": ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cutidinasapplication_class",
+      "label": "CutidinasApplication",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/CutidinasApplication.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "datainitializer_class",
+      "label": "DataInitializer",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "securityconfig_class",
+      "label": "SecurityConfig",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "admincontroller_class",
+      "label": "AdminController",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logincontroller_class",
+      "label": "LoginController",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cuti_model",
+      "label": "Cuti",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/Cuti.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "pengajuancuti_model",
+      "label": "PengajuanCuti",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/PengajuanCuti.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "user_model",
+      "label": "User",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/User.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cutirepository_interface",
+      "label": "CutiRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/CutiRepository.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "pengajuancutirepository_interface",
+      "label": "PengajuanCutiRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/PengajuanCutiRepository.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "user_repository",
+      "label": "UserRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/UserRepository.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "custom_user_details",
+      "label": "CustomUserDetails",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "custom_user_details_service",
+      "label": "CustomUserDetailsService",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cutidinas_application_tests",
+      "label": "CutidinasApplicationTests",
+      "file_type": "code",
+      "source_file": "src/test/java/com/ppip/cutidinas/CutidinasApplicationTests.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "graphify_rule",
+      "label": "Graphify Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "graphify_workflow",
+      "label": "Graphify Workflow",
+      "file_type": "document",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sidebar_fragment_ref",
+      "label": "Sidebar Fragment (Ref)",
+      "file_type": "code",
+      "source_file": "reference/sidebar-fragment.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_template",
+      "label": "Index Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "layout_template",
+      "label": "Layout Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/layout.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "login_template",
+      "label": "Login Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/login.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "admin_edit_template",
+      "label": "Admin Edit Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/admin/edit.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "admin_users_template",
+      "label": "Admin Users Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/admin/users.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sidebar_fragment",
+      "label": "Sidebar Fragment",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/fragments/sidebar.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "gemini_generated_image_logo",
+      "label": "Abstract P Logo",
+      "file_type": "image",
+      "source_file": "src/main/resources/static/img/Gemini_Generated_Image_eu5nwveu5nwveu5n.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "datainitializer_class",
+      "target": "user_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "admincontroller_class",
+      "target": "user_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cuti_model",
+      "target": "user_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/model/Cuti.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pengajuancuti_model",
+      "target": "cuti_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/model/PengajuanCuti.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "cutirepository_interface",
+      "target": "cuti_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/CutiRepository.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pengajuancutirepository_interface",
+      "target": "pengajuancuti_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/PengajuanCutiRepository.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "admincontroller_class",
+      "target": "datainitializer_class",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "recordtooluse_sh_script",
+      "target": "recordtooluse_ps1_script",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.sh",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "custom_user_details_service",
+      "target": "user_repository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "custom_user_details_service",
+      "target": "custom_user_details",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "layout_template",
+      "target": "sidebar_fragment",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/resources/templates/layout.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "admin_edit_template",
+      "target": "layout_template",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/resources/templates/admin/edit.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "admin_users_template",
+      "target": "layout_template",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/resources/templates/admin/users.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "sidebar_fragment",
+      "target": "sidebar_fragment_ref",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/main/resources/templates/fragments/sidebar.html",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "jpa_domain_entities",
+      "label": "JPA Domain Entities",
+      "nodes": [
+        "cuti_model",
+        "pengajuancuti_model",
+        "user_model"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/main/java/com/ppip/cutidinas/model"
+    },
+    {
+      "id": "thymeleaf_layout_system",
+      "label": "Thymeleaf Layout System",
+      "nodes": [
+        "admin_edit_template",
+        "admin_users_template",
+        "layout_template",
+        "sidebar_fragment"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/main/resources/templates/layout.html"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

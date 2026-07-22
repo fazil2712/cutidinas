@@ -1,0 +1,1650 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "jpa_domain_entities",
+        "label": "JPA Domain Entities",
+        "nodes": [
+          "cuti_model",
+          "pengajuancuti_model",
+          "user_model"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "src/main/java/com/ppip/cutidinas/model"
+      },
+      {
+        "id": "thymeleaf_layout_system",
+        "label": "Thymeleaf Layout System",
+        "nodes": [
+          "admin_edit_template",
+          "admin_users_template",
+          "layout_template",
+          "sidebar_fragment"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "src/main/resources/templates/layout.html"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "recordToolUse.ps1",
+      "file_type": "code",
+      "source_file": ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.ps1",
+      "source_location": "L1",
+      "id": "github_modernize_java_upgrade_hooks_scripts_recordtooluse_ps1",
+      "community": 16,
+      "norm_label": "recordtooluse.ps1"
+    },
+    {
+      "label": "recordToolUse.sh",
+      "file_type": "code",
+      "source_file": ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.sh",
+      "source_location": "L1",
+      "id": "github_modernize_java_upgrade_hooks_scripts_recordtooluse_sh",
+      "community": 17,
+      "norm_label": "recordtooluse.sh"
+    },
+    {
+      "label": "CutidinasApplication.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/CutidinasApplication.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_cutidinasapplication_java",
+      "community": 2,
+      "norm_label": "cutidinasapplication.java"
+    },
+    {
+      "label": "CutidinasApplication",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/CutidinasApplication.java",
+      "source_location": "L6",
+      "id": "cutidinas_cutidinasapplication_cutidinasapplication",
+      "community": 2,
+      "norm_label": "cutidinasapplication"
+    },
+    {
+      "label": ".main()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/CutidinasApplication.java",
+      "source_location": "L9",
+      "id": "cutidinas_cutidinasapplication_cutidinasapplication_main",
+      "community": 2,
+      "norm_label": ".main()"
+    },
+    {
+      "label": "DataInitializer.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_bootstrap_datainitializer_java",
+      "community": 2,
+      "norm_label": "datainitializer.java"
+    },
+    {
+      "label": "DataInitializer",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": "L12",
+      "id": "bootstrap_datainitializer_datainitializer",
+      "community": 2,
+      "norm_label": "datainitializer"
+    },
+    {
+      "label": "CommandLineRunner",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "commandlinerunner",
+      "community": 2,
+      "norm_label": "commandlinerunner"
+    },
+    {
+      "label": ".run()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": "L19",
+      "id": "bootstrap_datainitializer_datainitializer_run",
+      "community": 2,
+      "norm_label": ".run()"
+    },
+    {
+      "label": "SecurityConfig.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_config_securityconfig_java",
+      "community": 6,
+      "norm_label": "securityconfig.java"
+    },
+    {
+      "label": "SecurityConfig",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": "L11",
+      "id": "config_securityconfig_securityconfig",
+      "community": 6,
+      "norm_label": "securityconfig"
+    },
+    {
+      "label": ".securityFilterChain()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": "L15",
+      "id": "config_securityconfig_securityconfig_securityfilterchain",
+      "community": 6,
+      "norm_label": ".securityfilterchain()"
+    },
+    {
+      "label": ".passwordEncoder()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": "L39",
+      "id": "config_securityconfig_securityconfig_passwordencoder",
+      "community": 6,
+      "norm_label": ".passwordencoder()"
+    },
+    {
+      "label": "AdminController.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_controller_admincontroller_java",
+      "community": 1,
+      "norm_label": "admincontroller.java"
+    },
+    {
+      "label": "AdminController",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L20",
+      "id": "controller_admincontroller_admincontroller",
+      "community": 1,
+      "norm_label": "admincontroller"
+    },
+    {
+      "label": ".listUsers()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L31",
+      "id": "controller_admincontroller_admincontroller_listusers",
+      "community": 1,
+      "norm_label": ".listusers()"
+    },
+    {
+      "label": ".addUser()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L38",
+      "id": "controller_admincontroller_admincontroller_adduser",
+      "community": 1,
+      "norm_label": ".adduser()"
+    },
+    {
+      "label": ".editUserForm()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L72",
+      "id": "controller_admincontroller_admincontroller_edituserform",
+      "community": 1,
+      "norm_label": ".edituserform()"
+    },
+    {
+      "label": ".updateUser()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L83",
+      "id": "controller_admincontroller_admincontroller_updateuser",
+      "community": 1,
+      "norm_label": ".updateuser()"
+    },
+    {
+      "label": ".deleteUser()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L120",
+      "id": "controller_admincontroller_admincontroller_deleteuser",
+      "community": 1,
+      "norm_label": ".deleteuser()"
+    },
+    {
+      "label": "LoginController.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_controller_logincontroller_java",
+      "community": 7,
+      "norm_label": "logincontroller.java"
+    },
+    {
+      "label": "LoginController",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": "L6",
+      "id": "controller_logincontroller_logincontroller",
+      "community": 7,
+      "norm_label": "logincontroller"
+    },
+    {
+      "label": ".login()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": "L9",
+      "id": "controller_logincontroller_logincontroller_login",
+      "community": 7,
+      "norm_label": ".login()"
+    },
+    {
+      "label": ".home()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": "L14",
+      "id": "controller_logincontroller_logincontroller_home",
+      "community": 7,
+      "norm_label": ".home()"
+    },
+    {
+      "label": "Cuti.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/Cuti.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_model_cuti_java",
+      "community": 10,
+      "norm_label": "cuti.java"
+    },
+    {
+      "label": "Cuti",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/Cuti.java",
+      "source_location": "L16",
+      "id": "model_cuti_cuti",
+      "community": 10,
+      "norm_label": "cuti"
+    },
+    {
+      "label": "PengajuanCuti.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/PengajuanCuti.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_model_pengajuancuti_java",
+      "community": 13,
+      "norm_label": "pengajuancuti.java"
+    },
+    {
+      "label": "PengajuanCuti",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/PengajuanCuti.java",
+      "source_location": "L16",
+      "id": "model_pengajuancuti_pengajuancuti",
+      "community": 13,
+      "norm_label": "pengajuancuti"
+    },
+    {
+      "label": "User.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/User.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_model_user_java",
+      "community": 14,
+      "norm_label": "user.java"
+    },
+    {
+      "label": "User",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/User.java",
+      "source_location": "L17",
+      "id": "model_user_user",
+      "community": 14,
+      "norm_label": "user"
+    },
+    {
+      "label": "CutiRepository.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/CutiRepository.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_repository_cutirepository_java",
+      "community": 12,
+      "norm_label": "cutirepository.java"
+    },
+    {
+      "label": "CutiRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/CutiRepository.java",
+      "source_location": "L7",
+      "id": "repository_cutirepository_cutirepository",
+      "community": 12,
+      "norm_label": "cutirepository"
+    },
+    {
+      "label": "PengajuanCutiRepository.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/PengajuanCutiRepository.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_repository_pengajuancutirepository_java",
+      "community": 15,
+      "norm_label": "pengajuancutirepository.java"
+    },
+    {
+      "label": "PengajuanCutiRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/PengajuanCutiRepository.java",
+      "source_location": "L7",
+      "id": "repository_pengajuancutirepository_pengajuancutirepository",
+      "community": 15,
+      "norm_label": "pengajuancutirepository"
+    },
+    {
+      "label": "UserRepository.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/UserRepository.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_repository_userrepository_java",
+      "community": 4,
+      "norm_label": "userrepository.java"
+    },
+    {
+      "label": "UserRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/UserRepository.java",
+      "source_location": "L9",
+      "id": "repository_userrepository_userrepository",
+      "community": 4,
+      "norm_label": "userrepository"
+    },
+    {
+      "label": ".findByBadgeidOrName()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/UserRepository.java",
+      "source_location": "L11",
+      "id": "repository_userrepository_userrepository_findbybadgeidorname",
+      "community": 4,
+      "norm_label": ".findbybadgeidorname()"
+    },
+    {
+      "label": "CustomUserDetails.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_security_customuserdetails_java",
+      "community": 0,
+      "norm_label": "customuserdetails.java"
+    },
+    {
+      "label": "CustomUserDetails",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L8",
+      "id": "security_customuserdetails_customuserdetails",
+      "community": 0,
+      "norm_label": "customuserdetails"
+    },
+    {
+      "label": "UserDetails",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "userdetails",
+      "community": 0,
+      "norm_label": "userdetails"
+    },
+    {
+      "label": ".CustomUserDetails()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L13",
+      "id": "security_customuserdetails_customuserdetails_customuserdetails",
+      "community": 0,
+      "norm_label": ".customuserdetails()"
+    },
+    {
+      "label": ".getFullName()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L18",
+      "id": "security_customuserdetails_customuserdetails_getfullname",
+      "community": 0,
+      "norm_label": ".getfullname()"
+    },
+    {
+      "label": ".getBadgeId()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L22",
+      "id": "security_customuserdetails_customuserdetails_getbadgeid",
+      "community": 1,
+      "norm_label": ".getbadgeid()"
+    },
+    {
+      "label": ".getRoleName()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L26",
+      "id": "security_customuserdetails_customuserdetails_getrolename",
+      "community": 0,
+      "norm_label": ".getrolename()"
+    },
+    {
+      "label": ".getFotoProfil()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L33",
+      "id": "security_customuserdetails_customuserdetails_getfotoprofil",
+      "community": 0,
+      "norm_label": ".getfotoprofil()"
+    },
+    {
+      "label": ".getUser()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L37",
+      "id": "security_customuserdetails_customuserdetails_getuser",
+      "community": 0,
+      "norm_label": ".getuser()"
+    },
+    {
+      "label": ".getAuthorities()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L41",
+      "id": "security_customuserdetails_customuserdetails_getauthorities",
+      "community": 0,
+      "norm_label": ".getauthorities()"
+    },
+    {
+      "label": ".getPassword()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L46",
+      "id": "security_customuserdetails_customuserdetails_getpassword",
+      "community": 1,
+      "norm_label": ".getpassword()"
+    },
+    {
+      "label": ".getUsername()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L51",
+      "id": "security_customuserdetails_customuserdetails_getusername",
+      "community": 1,
+      "norm_label": ".getusername()"
+    },
+    {
+      "label": ".isAccountNonExpired()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L56",
+      "id": "security_customuserdetails_customuserdetails_isaccountnonexpired",
+      "community": 0,
+      "norm_label": ".isaccountnonexpired()"
+    },
+    {
+      "label": ".isAccountNonLocked()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L58",
+      "id": "security_customuserdetails_customuserdetails_isaccountnonlocked",
+      "community": 0,
+      "norm_label": ".isaccountnonlocked()"
+    },
+    {
+      "label": ".isCredentialsNonExpired()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L60",
+      "id": "security_customuserdetails_customuserdetails_iscredentialsnonexpired",
+      "community": 0,
+      "norm_label": ".iscredentialsnonexpired()"
+    },
+    {
+      "label": ".isEnabled()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L62",
+      "id": "security_customuserdetails_customuserdetails_isenabled",
+      "community": 0,
+      "norm_label": ".isenabled()"
+    },
+    {
+      "label": "CustomUserDetailsService.java",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L1",
+      "id": "src_main_java_com_ppip_cutidinas_security_customuserdetailsservice_java",
+      "community": 4,
+      "norm_label": "customuserdetailsservice.java"
+    },
+    {
+      "label": "CustomUserDetailsService",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L15",
+      "id": "security_customuserdetailsservice_customuserdetailsservice",
+      "community": 4,
+      "norm_label": "customuserdetailsservice"
+    },
+    {
+      "label": "UserDetailsService",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "userdetailsservice",
+      "community": 4,
+      "norm_label": "userdetailsservice"
+    },
+    {
+      "label": ".loadUserByUsername()",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L21",
+      "id": "security_customuserdetailsservice_customuserdetailsservice_loaduserbyusername",
+      "community": 4,
+      "norm_label": ".loaduserbyusername()"
+    },
+    {
+      "label": "CutidinasApplicationTests.java",
+      "file_type": "code",
+      "source_file": "src/test/java/com/ppip/cutidinas/CutidinasApplicationTests.java",
+      "source_location": "L1",
+      "id": "src_test_java_com_ppip_cutidinas_cutidinasapplicationtests_java",
+      "community": 9,
+      "norm_label": "cutidinasapplicationtests.java"
+    },
+    {
+      "label": "CutidinasApplicationTests",
+      "file_type": "code",
+      "source_file": "src/test/java/com/ppip/cutidinas/CutidinasApplicationTests.java",
+      "source_location": "L6",
+      "id": "cutidinas_cutidinasapplicationtests_cutidinasapplicationtests",
+      "community": 9,
+      "norm_label": "cutidinasapplicationtests"
+    },
+    {
+      "label": ".contextLoads()",
+      "file_type": "code",
+      "source_file": "src/test/java/com/ppip/cutidinas/CutidinasApplicationTests.java",
+      "source_location": "L9",
+      "id": "cutidinas_cutidinasapplicationtests_cutidinasapplicationtests_contextloads",
+      "community": 9,
+      "norm_label": ".contextloads()"
+    },
+    {
+      "label": "Maven Wrapper Script",
+      "file_type": "code",
+      "source_file": "mvnw",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mvnw_maven_wrapper",
+      "community": 18,
+      "norm_label": "maven wrapper script"
+    },
+    {
+      "label": "RecordToolUse PowerShell Script",
+      "file_type": "code",
+      "source_file": ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.ps1",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "recordtooluse_ps1_script",
+      "community": 11,
+      "norm_label": "recordtooluse powershell script"
+    },
+    {
+      "label": "RecordToolUse Shell Script",
+      "file_type": "code",
+      "source_file": ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "recordtooluse_sh_script",
+      "community": 11,
+      "norm_label": "recordtooluse shell script"
+    },
+    {
+      "label": "CutidinasApplication",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/CutidinasApplication.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cutidinasapplication_class",
+      "community": 19,
+      "norm_label": "cutidinasapplication"
+    },
+    {
+      "label": "DataInitializer",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "datainitializer_class",
+      "community": 3,
+      "norm_label": "datainitializer"
+    },
+    {
+      "label": "SecurityConfig",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "securityconfig_class",
+      "community": 20,
+      "norm_label": "securityconfig"
+    },
+    {
+      "label": "AdminController",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "admincontroller_class",
+      "community": 3,
+      "norm_label": "admincontroller"
+    },
+    {
+      "label": "LoginController",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "logincontroller_class",
+      "community": 21,
+      "norm_label": "logincontroller"
+    },
+    {
+      "label": "Cuti",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/Cuti.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cuti_model",
+      "community": 3,
+      "norm_label": "cuti"
+    },
+    {
+      "label": "PengajuanCuti",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/PengajuanCuti.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pengajuancuti_model",
+      "community": 3,
+      "norm_label": "pengajuancuti"
+    },
+    {
+      "label": "User",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/User.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "user_model",
+      "community": 3,
+      "norm_label": "user"
+    },
+    {
+      "label": "CutiRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/CutiRepository.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cutirepository_interface",
+      "community": 3,
+      "norm_label": "cutirepository"
+    },
+    {
+      "label": "PengajuanCutiRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/PengajuanCutiRepository.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pengajuancutirepository_interface",
+      "community": 3,
+      "norm_label": "pengajuancutirepository"
+    },
+    {
+      "label": "UserRepository",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/UserRepository.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "user_repository",
+      "community": 8,
+      "norm_label": "userrepository"
+    },
+    {
+      "label": "CustomUserDetails",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "custom_user_details",
+      "community": 8,
+      "norm_label": "customuserdetails"
+    },
+    {
+      "label": "CustomUserDetailsService",
+      "file_type": "code",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "custom_user_details_service",
+      "community": 8,
+      "norm_label": "customuserdetailsservice"
+    },
+    {
+      "label": "CutidinasApplicationTests",
+      "file_type": "code",
+      "source_file": "src/test/java/com/ppip/cutidinas/CutidinasApplicationTests.java",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cutidinas_application_tests",
+      "community": 22,
+      "norm_label": "cutidinasapplicationtests"
+    },
+    {
+      "label": "Graphify Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_rule",
+      "community": 23,
+      "norm_label": "graphify rule"
+    },
+    {
+      "label": "Graphify Workflow",
+      "file_type": "document",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_workflow",
+      "community": 24,
+      "norm_label": "graphify workflow"
+    },
+    {
+      "label": "Sidebar Fragment (Ref)",
+      "file_type": "code",
+      "source_file": "reference/sidebar-fragment.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "sidebar_fragment_ref",
+      "community": 5,
+      "norm_label": "sidebar fragment (ref)"
+    },
+    {
+      "label": "Index Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_template",
+      "community": 25,
+      "norm_label": "index template"
+    },
+    {
+      "label": "Layout Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/layout.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "layout_template",
+      "community": 5,
+      "norm_label": "layout template"
+    },
+    {
+      "label": "Login Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/login.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "login_template",
+      "community": 26,
+      "norm_label": "login template"
+    },
+    {
+      "label": "Admin Edit Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/admin/edit.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "admin_edit_template",
+      "community": 5,
+      "norm_label": "admin edit template"
+    },
+    {
+      "label": "Admin Users Template",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/admin/users.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "admin_users_template",
+      "community": 5,
+      "norm_label": "admin users template"
+    },
+    {
+      "label": "Sidebar Fragment",
+      "file_type": "code",
+      "source_file": "src/main/resources/templates/fragments/sidebar.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "sidebar_fragment",
+      "community": 5,
+      "norm_label": "sidebar fragment"
+    },
+    {
+      "label": "Abstract P Logo",
+      "file_type": "image",
+      "source_file": "src/main/resources/static/img/Gemini_Generated_Image_eu5nwveu5nwveu5n.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "gemini_generated_image_logo",
+      "community": 27,
+      "norm_label": "abstract p logo"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/CutidinasApplication.java",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_cutidinasapplication_java",
+      "target": "cutidinas_cutidinasapplication_cutidinasapplication",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/CutidinasApplication.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "cutidinas_cutidinasapplication_cutidinasapplication",
+      "target": "cutidinas_cutidinasapplication_cutidinasapplication_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/main/java/com/ppip/cutidinas/CutidinasApplication.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "cutidinas_cutidinasapplication_cutidinasapplication_main",
+      "target": "bootstrap_datainitializer_datainitializer_run"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_bootstrap_datainitializer_java",
+      "target": "commandlinerunner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_bootstrap_datainitializer_java",
+      "target": "bootstrap_datainitializer_datainitializer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "bootstrap_datainitializer_datainitializer",
+      "target": "commandlinerunner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "bootstrap_datainitializer_datainitializer",
+      "target": "bootstrap_datainitializer_datainitializer_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_config_securityconfig_java",
+      "target": "config_securityconfig_securityconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "config_securityconfig_securityconfig",
+      "target": "config_securityconfig_securityconfig_securityfilterchain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/config/SecurityConfig.java",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "config_securityconfig_securityconfig",
+      "target": "config_securityconfig_securityconfig_passwordencoder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_controller_admincontroller_java",
+      "target": "controller_admincontroller_admincontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_listusers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_adduser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_edituserform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_updateuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_deleteuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller_adduser",
+      "target": "security_customuserdetails_customuserdetails_getbadgeid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller_adduser",
+      "target": "security_customuserdetails_customuserdetails_getpassword"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller_updateuser",
+      "target": "security_customuserdetails_customuserdetails_getpassword"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_controller_logincontroller_java",
+      "target": "controller_logincontroller_logincontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "controller_logincontroller_logincontroller",
+      "target": "controller_logincontroller_logincontroller_login",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/LoginController.java",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "controller_logincontroller_logincontroller",
+      "target": "controller_logincontroller_logincontroller_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/Cuti.java",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_model_cuti_java",
+      "target": "model_cuti_cuti",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/PengajuanCuti.java",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_model_pengajuancuti_java",
+      "target": "model_pengajuancuti_pengajuancuti",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/model/User.java",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_model_user_java",
+      "target": "model_user_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/CutiRepository.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_repository_cutirepository_java",
+      "target": "repository_cutirepository_cutirepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/PengajuanCutiRepository.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_repository_pengajuancutirepository_java",
+      "target": "repository_pengajuancutirepository_pengajuancutirepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/UserRepository.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_repository_userrepository_java",
+      "target": "repository_userrepository_userrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/UserRepository.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "repository_userrepository_userrepository",
+      "target": "repository_userrepository_userrepository_findbybadgeidorname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "security_customuserdetailsservice_customuserdetailsservice_loaduserbyusername",
+      "target": "repository_userrepository_userrepository_findbybadgeidorname"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_security_customuserdetails_java",
+      "target": "userdetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_security_customuserdetails_java",
+      "target": "security_customuserdetails_customuserdetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "userdetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_customuserdetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_getfullname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_getbadgeid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_getrolename",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_getfotoprofil",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_getuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_getauthorities",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_getpassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_getusername",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_isaccountnonexpired",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_isaccountnonlocked",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_iscredentialsnonexpired",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails",
+      "target": "security_customuserdetails_customuserdetails_isenabled",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_security_customuserdetailsservice_java",
+      "target": "userdetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetails.java",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "security_customuserdetails_customuserdetails_getusername",
+      "target": "security_customuserdetails_customuserdetails_getbadgeid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_security_customuserdetailsservice_java",
+      "target": "userdetailsservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "src_main_java_com_ppip_cutidinas_security_customuserdetailsservice_java",
+      "target": "security_customuserdetailsservice_customuserdetailsservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "security_customuserdetailsservice_customuserdetailsservice",
+      "target": "userdetailsservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "security_customuserdetailsservice_customuserdetailsservice",
+      "target": "security_customuserdetailsservice_customuserdetailsservice_loaduserbyusername",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/test/java/com/ppip/cutidinas/CutidinasApplicationTests.java",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_test_java_com_ppip_cutidinas_cutidinasapplicationtests_java",
+      "target": "cutidinas_cutidinasapplicationtests_cutidinasapplicationtests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/test/java/com/ppip/cutidinas/CutidinasApplicationTests.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "cutidinas_cutidinasapplicationtests_cutidinasapplicationtests",
+      "target": "cutidinas_cutidinasapplicationtests_cutidinasapplicationtests_contextloads",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": ".github/modernize/java-upgrade/hooks/scripts/recordToolUse.sh",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "recordtooluse_sh_script",
+      "target": "recordtooluse_ps1_script"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/bootstrap/DataInitializer.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "datainitializer_class",
+      "target": "user_model"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "admincontroller_class",
+      "target": "datainitializer_class"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/controller/AdminController.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "admincontroller_class",
+      "target": "user_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/model/Cuti.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "cuti_model",
+      "target": "user_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/model/PengajuanCuti.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "pengajuancuti_model",
+      "target": "cuti_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/CutiRepository.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "cutirepository_interface",
+      "target": "cuti_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/repository/PengajuanCutiRepository.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "pengajuancutirepository_interface",
+      "target": "pengajuancuti_model"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "custom_user_details_service",
+      "target": "user_repository"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/java/com/ppip/cutidinas/security/CustomUserDetailsService.java",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "custom_user_details_service",
+      "target": "custom_user_details"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/main/resources/templates/fragments/sidebar.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sidebar_fragment",
+      "target": "sidebar_fragment_ref"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/resources/templates/layout.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "layout_template",
+      "target": "sidebar_fragment"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/resources/templates/admin/edit.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "admin_edit_template",
+      "target": "layout_template"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/resources/templates/admin/users.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "admin_users_template",
+      "target": "layout_template"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "jpa_domain_entities",
+      "label": "JPA Domain Entities",
+      "nodes": [
+        "cuti_model",
+        "pengajuancuti_model",
+        "user_model"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/main/java/com/ppip/cutidinas/model"
+    },
+    {
+      "id": "thymeleaf_layout_system",
+      "label": "Thymeleaf Layout System",
+      "nodes": [
+        "admin_edit_template",
+        "admin_users_template",
+        "layout_template",
+        "sidebar_fragment"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/main/resources/templates/layout.html"
+    }
+  ],
+  "built_at_commit": "35f82003708e22713a91387bbfce8e0474cbd7b8"
+}
