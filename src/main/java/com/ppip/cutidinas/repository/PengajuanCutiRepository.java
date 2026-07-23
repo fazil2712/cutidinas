@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PengajuanCutiRepository extends JpaRepository<PengajuanCuti, Long> {
 
-    @Query("SELECT COALESCE(SUM(p.jumlahHariKerja), 0) FROM PengajuanCuti p WHERE p.cuti = :cuti AND p.status = 'MENUNGGU_PERSETUJUAN'")
-    int sumPendingHariByCuti(@Param("cuti") Cuti cuti);
+    java.util.List<PengajuanCuti> findByCutiBadgeidOrderByTanggalMulaiDesc(String badgeid);
+    java.util.List<PengajuanCuti> findAllByOrderByTanggalMulaiDesc();
+    
+    java.util.List<PengajuanCuti> findByStatusOrderByTanggalMulaiDesc(String status);
+    java.util.List<PengajuanCuti> findByApproverBadgeidOrderByTanggalMulaiDesc(String approverBadgeid);
 }

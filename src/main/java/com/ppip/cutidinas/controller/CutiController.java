@@ -36,10 +36,7 @@ public class CutiController {
         List<Cuti> cutiList = cutiRepository.findByBadgeid(badgeid);
 
         List<SaldoCutiDto> saldoList = cutiList.stream()
-                .map(c -> {
-                    int pending = pengajuanCutiRepository.sumPendingHariByCuti(c);
-                    return new SaldoCutiDto(c, pending);
-                })
+                .map(c -> new SaldoCutiDto(c, c.getKuotaPending() != null ? c.getKuotaPending() : 0))
                 .toList();
 
         model.addAttribute("saldoList", saldoList);

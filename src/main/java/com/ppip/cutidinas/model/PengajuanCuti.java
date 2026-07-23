@@ -33,4 +33,8 @@ public class PengajuanCuti {
     private Integer jumlahHariKalender;
     private Integer jumlahHariKerja;
     private String status;
+    private String pendelegasianPekerjaan;
+    private String alasanAbsen;
+    private String approverBadgeid;
+    private String alasanPenolakan;
 }

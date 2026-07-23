@@ -47,8 +47,9 @@
                 <a th:href="@{/cuti/pengajuan}" class="nav-item" th:classappend="${activeMenu == 'pengajuancuti'} ? 'active'">
                     Pengajuan Cuti
                 </a>
-                <a th:href="@{/cuti/data}" class="nav-item" th:classappend="${activeMenu == 'datacuti'} ? 'active'">
-                    Data Cuti
+                <!-- Role check can be implemented here if you introduce ROLE_APPROVER, for now it's fine -->
+                <a th:href="@{/cuti/persetujuan}" class="nav-item" th:classappend="${activeMenu == 'persetujuan_cuti'} ? 'active'">
+                    Persetujuan Cuti
                 </a>
             </th:block>
             
@@ -59,6 +60,9 @@
                     Admin Panel
                 </a>
                 <th:block th:if="${session.currentModule == 'cuti'}">
+                    <a th:href="@{/admin/pengajuan}" class="nav-item" th:classappend="${activeMenu == 'admin_pengajuan'} ? 'active'">
+                        Kelola Pengajuan Cuti
+                    </a>
                     <a th:href="@{/admin/holidays}" class="nav-item" th:classappend="${activeMenu == 'admin_holidays'} ? 'active'">
                         Kelola Hari Libur
                     </a>

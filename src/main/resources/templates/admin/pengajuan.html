@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:replace="~{layout :: layout(activeMenu='admin_pengajuan', content=~{::.page-content})}">
+    <div class="page-content">
+
+        <style>
+            .table-responsive { overflow-x: auto; }
+            .header-flex {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            /* Status badges */
+            .status-badge {
+                display: inline-block;
+                padding: 5px 14px;
+                border-radius: 6px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .status-tersimpan { background: #f1f5f9; color: #475569; }
+            .status-pending { background: #fef3c7; color: #92400e; }
+            .status-disetujui { background: #dcfce7; color: #166534; }
+            .status-ditolak { background: #fee2e2; color: #991b1b; }
+            
+            /* Modal Styles */
+            .modal-overlay {
+                display: flex;
+                opacity: 0;
+                visibility: hidden;
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .modal-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            .modal-content {
+                background: white;
+                border-radius: 12px;
+                width: 100%;
+                max-width: 600px;
+                padding: 30px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                transform: scale(0.95) translateY(10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .modal-overlay.active .modal-content {
+                transform: scale(1) translateY(0);
+            }
+            .alert-modal-content {
+                background: white;
+                border-radius: 12px;
+                width: 100%;
+                max-width: 400px;
+                padding: 24px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                transform: scale(0.95) translateY(10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                text-align: center;
+            }
+            .modal-overlay.active .alert-modal-content {
+                transform: scale(1) translateY(0);
+            }
+            .modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #e2e8f0;
+                padding-bottom: 15px;
+            }
+            .modal-header h3 { margin: 0; color: #1e293b; }
+            .modal-close {
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #64748b;
+            }
+            
+            .tipe-absen-badge {
+                background: #1e293b;
+                color: white;
+                padding: 6px 16px;
+                border-radius: 20px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+        </style>
+        
+        <!-- Flatpickr CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+        <h1 class="page-title">Kelola Pengajuan Cuti</h1>
+
+        <div th:if="${error}" style="background: #fee2e2; color: #991b1b; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+            <span th:text="${error}"></span>
+        </div>
+        <div th:if="${success}" style="background: #dcfce7; color: #166534; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+            <span th:text="${success}"></span>
+        </div>
+
+        <div class="card">
+            <div class="header-flex">
+                <h3 class="card-title" style="margin: 0;">Semua Pengajuan Cuti</h3>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID ABSEN</th>
+                            <th>NAMA (NIK)</th>
+                            <th>TIPE CUTI</th>
+                            <th>TANGGAL MULAI</th>
+                            <th>TANGGAL BERAKHIR</th>
+                            <th>HARI</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="hist : ${pengajuanList}">
+                            <td th:text="'CT-' + ${#numbers.formatInteger(hist.id, 5)}">CT-00001</td>
+                            <td>
+                                <div style="font-weight: 600; color: #0f766e;" th:text="${hist.cuti.user.name}">Nama</div>
+                                <div style="font-size: 12px; color: #64748b;" th:text="${hist.cuti.user.nik}">NIK</div>
+                            </td>
+                            <td><span class="tipe-absen-badge" th:text="${hist.tipeCuti}">Cuti Tahunan</span></td>
+                            <td th:text="${#temporals.format(hist.tanggalMulai, 'dd MMM yyyy')}">-</td>
+                            <td th:text="${#temporals.format(hist.tanggalAkhir, 'dd MMM yyyy')}">-</td>
+                            <td>
+                                <div th:text="${hist.jumlahHariKalender} + ' Kalender'">-</div>
+                                <div style="color: #64748b; font-size: 13px;" th:text="${hist.jumlahHariKerja} + ' Kerja'">-</div>
+                            </td>
+                            <td>
+                                <span class="status-badge" th:classappend="${hist.status == 'tersimpan' ? 'status-tersimpan' : (hist.status == 'menunggu persetujuan' ? 'status-pending' : (hist.status == 'disetujui' ? 'status-disetujui' : 'status-ditolak'))}" th:text="${#strings.capitalize(hist.status)}">Tersimpan</span>
+                            </td>
+                            <td>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-sm btn-edit" th:onclick="openEditModal([[${hist.id}]], [[${hist.tanggalMulai}]], [[${hist.tanggalAkhir}]], [[${hist.pendelegasianPekerjaan}]], [[${hist.alasanAbsen}]], [[${hist.tipeCuti}]], [[${hist.status}]], [[${hist.cuti.jenis}]], [[${hist.cuti.sisaHari}]], [[${hist.cuti.kuotaPending}]], [[${hist.jumlahHariKalender}]], [[${hist.jumlahHariKerja}]])">Edit</button>
+                                    <button class="btn btn-sm btn-delete" th:onclick="confirmDelete([[${hist.id}]])">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr th:if="${pengajuanList == null or pengajuanList.isEmpty()}">
+                            <td colspan="8" style="text-align: center; color: #94a3b8; padding: 20px;">Belum ada pengajuan cuti.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Hidden Delete Form -->
+        <form id="deleteForm" th:action="@{/admin/pengajuan/delete}" method="post" style="display: none;">
+            <input type="hidden" name="id" id="deleteId">
+        </form>
+
+        <!-- ===== EDIT MODAL ===== -->
+        <div id="editModal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Pengajuan Cuti</h3>
+                    <button class="modal-close" onclick="closeEditModal()">&times;</button>
+                </div>
+                <form id="editForm" th:action="@{/admin/pengajuan/edit}" method="post" onsubmit="return validateEditForm(event)">
+                    <input type="hidden" name="id" id="editId">
+                    
+                    <div class="form-group">
+                        <label>Tanggal Absen</label>
+                        <input type="text" id="editTanggalAbsen" class="form-control" required>
+                        <input type="hidden" name="tanggalMulai" id="editTanggalMulai">
+                        <input type="hidden" name="tanggalAkhir" id="editTanggalAkhir">
+                        <small id="editKalkulasiHari" style="display: block; margin-top: 8px; color: #0284c7; font-weight: 500;"></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Pendelegasian Pekerjaan</label>
+                        <input type="text" name="pendelegasianPekerjaan" id="editPendelegasian" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Alasan Absen</label>
+                        <textarea name="alasanAbsen" id="editAlasan" class="form-control" required rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Cuti</label>
+                        <select name="tipeCuti" id="editTipeCuti" class="form-control" required>
+                            <option value="01 Tahunan">01 Tahunan</option>
+                            <option value="02 Menikah">02 Menikah</option>
+                            <option value="03 Keluarga Meninggal">03 Keluarga Meninggal</option>
+                            <option value="04 Lain-lain">04 Lain-lain</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="status" id="editStatus" class="form-control" required>
+                            <option value="tersimpan">Tersimpan</option>
+                            <option value="menunggu persetujuan">Menunggu Persetujuan</option>
+                            <option value="disetujui">Disetujui</option>
+                            <option value="ditolak">Ditolak</option>
+                        </select>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 30px;">
+                        <button type="button" class="btn" style="background: #f1f5f9; color: #475569;" onclick="closeEditModal()">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Custom Alert Modal -->
+        <div id="customAlertModal" class="modal-overlay" style="z-index: 2000;">
+            <div class="alert-modal-content">
+                <div style="color: #ef4444; margin-bottom: 15px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                </div>
+                <h3 style="margin: 0 0 10px 0; color: #1e293b; font-size: 18px;">Perhatian</h3>
+                <p id="alertMessage" style="color: #475569; margin: 0 0 20px 0; font-size: 14px;"></p>
+                <button type="button" class="btn btn-primary" onclick="closeAlertModal()" style="width: 100%;">Mengerti</button>
+            </div>
+        </div>
+
+        <!-- Custom Confirm Modal -->
+        <div id="customConfirmModal" class="modal-overlay" style="z-index: 2000;">
+            <div class="alert-modal-content">
+                <div style="color: #0ea5e9; margin-bottom: 15px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9 12l2 2 4-4"></path></svg>
+                </div>
+                <h3 style="margin: 0 0 10px 0; color: #1e293b; font-size: 18px;">Konfirmasi</h3>
+                <p id="confirmMessage" style="color: #475569; margin: 0 0 20px 0; font-size: 14px; white-space: pre-wrap;"></p>
+                <div style="display: flex; gap: 10px;">
+                    <button type="button" class="btn" style="background: #f1f5f9; color: #475569; flex: 1;" onclick="closeConfirmModal()">Batal</button>
+                    <button type="button" class="btn btn-primary" style="flex: 1;" onclick="proceedAction()">Lanjutkan</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var holidaysData = [];
+            var currentEditCutiJenis = '';
+            var currentEditSisaHari = 0;
+            var currentEditActionType = ''; // 'delete' or 'edit'
+
+            fetch('/admin/holidays/api')
+                .then(res => res.json())
+                .then(data => {
+                    holidaysData = data.map(e => e.start || e.date).filter(Boolean);
+                })
+                .catch(err => console.error("Failed to load holidays", err));
+
+            var editFp = flatpickr("#editTanggalAbsen", {
+                mode: "range",
+                dateFormat: "Y-m-d",
+                onChange: function(selectedDates) {
+                    if (selectedDates.length === 2) {
+                        updateEditKalkulasi(selectedDates[0], selectedDates[1]);
+                    } else if (selectedDates.length === 1) {
+                        updateEditKalkulasi(selectedDates[0], selectedDates[0]);
+                    }
+                }
+            });
+
+            function updateEditKalkulasi(d1, d2) {
+                const start = new Date(d1.getTime() - d1.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+                const end = new Date(d2.getTime() - d2.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+                document.getElementById('editTanggalMulai').value = start;
+                document.getElementById('editTanggalAkhir').value = end;
+                
+                var calc = calculateDays(d1, d2);
+                document.getElementById('editKalkulasiHari').innerText = 
+                    calc.kalenderDays + " Hari Kalender, " + calc.workingDays + " Hari Kerja";
+            }
+
+            function calculateDays(startDate, endDate) {
+                var start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+                var end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+                var kalenderDays = Math.round((end - start) / (1000 * 60 * 60 * 24)) + 1;
+                var workingDays = 0;
+                var curr = new Date(start);
+                
+                while (curr <= end) {
+                    var dayOfWeek = curr.getDay();
+                    var isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+                    var dateStr = curr.getFullYear() + "-" + 
+                                  String(curr.getMonth() + 1).padStart(2, '0') + "-" + 
+                                  String(curr.getDate()).padStart(2, '0');
+                    var isHoliday = holidaysData.includes(dateStr);
+                    
+                    if (!isWeekend && !isHoliday) { workingDays++; }
+                    curr.setDate(curr.getDate() + 1);
+                }
+                return { kalenderDays: kalenderDays, workingDays: workingDays };
+            }
+
+            function showCustomAlert(msg) {
+                document.getElementById('alertMessage').innerText = msg;
+                document.getElementById('customAlertModal').classList.add('active');
+            }
+            function closeAlertModal() {
+                document.getElementById('customAlertModal').classList.remove('active');
+            }
+            
+            function showCustomConfirm(msg) {
+                document.getElementById('confirmMessage').innerText = msg;
+                document.getElementById('customConfirmModal').classList.add('active');
+            }
+            function closeConfirmModal() {
+                document.getElementById('customConfirmModal').classList.remove('active');
+            }
+            
+            function proceedAction() {
+                if (currentEditActionType === 'delete') {
+                    document.getElementById('deleteForm').submit();
+                } else if (currentEditActionType === 'edit') {
+                    document.getElementById('editForm').onsubmit = null;
+                    document.getElementById('editForm').submit();
+                }
+            }
+
+            function confirmDelete(id) {
+                currentEditActionType = 'delete';
+                document.getElementById('deleteId').value = id;
+                showCustomConfirm("Apakah Anda yakin ingin menghapus data ini? Saldo cuti akan dikembalikan ke pengguna.");
+            }
+
+            function openEditModal(id, tm, ta, pendelegasian, alasan, tipeCuti, status, cutiJenis, sisaHari, kuotaPending, oldKalender, oldKerja) {
+                document.getElementById('editId').value = id;
+                document.getElementById('editTanggalMulai').value = tm;
+                document.getElementById('editTanggalAkhir').value = ta;
+                document.getElementById('editPendelegasian').value = pendelegasian;
+                document.getElementById('editAlasan').value = alasan;
+                document.getElementById('editTipeCuti').value = tipeCuti;
+                document.getElementById('editStatus').value = status;
+                
+                editFp.setDate([tm, ta]);
+                document.getElementById('editKalkulasiHari').innerText = oldKalender + " Hari Kalender, " + oldKerja + " Hari Kerja";
+                
+                currentEditCutiJenis = cutiJenis;
+                
+                // Real Sisa Hari if we revert this specific request
+                var oldDeducted = (cutiJenis === 'Cuti Besar') ? oldKalender : oldKerja;
+                currentEditSisaHari = sisaHari + oldDeducted;
+
+                document.getElementById('editModal').classList.add('active');
+            }
+            
+            function closeEditModal() {
+                document.getElementById('editModal').classList.remove('active');
+            }
+
+            function validateEditForm(e) {
+                e.preventDefault();
+                currentEditActionType = 'edit';
+                
+                var tm = document.getElementById('editTanggalMulai').value;
+                var ta = document.getElementById('editTanggalAkhir').value;
+                
+                if (!tm || !ta) {
+                    showCustomAlert("Silakan pilih rentang tanggal absen.");
+                    return false;
+                }
+                
+                var start = new Date(tm);
+                var end = new Date(ta);
+                var calc = calculateDays(start, end);
+                
+                if (calc.workingDays === 0 && currentEditCutiJenis === 'Cuti Kecil') {
+                    showCustomAlert("Tanggal merah, tidak perlu izin cuti.");
+                    return false;
+                }
+                
+                var deductedDays = (currentEditCutiJenis === 'Cuti Besar') ? calc.kalenderDays : calc.workingDays;
+                
+                if (deductedDays > currentEditSisaHari) {
+                    showCustomAlert("Sisa saldo cuti pemilik tidak cukup (tersisa " + currentEditSisaHari + ").");
+                    return false;
+                }
+                
+                var sisaAkhir = currentEditSisaHari - deductedDays;
+                showCustomConfirm("Sisa saldo cuti pengguna jika disimpan: " + sisaAkhir + "\n\nSimpan perubahan ini?");
+                
+                return false;
+            }
+            /*]]>*/
+        </script>
+    </div>
+</div>
+</body>
+</html>

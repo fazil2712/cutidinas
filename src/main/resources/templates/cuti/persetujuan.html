@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:replace="~{layout :: layout(activeMenu='persetujuan_cuti', content=~{::.page-content})}">
+    <div class="page-content">
+
+        <style>
+            .table-responsive { overflow-x: auto; }
+            .header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+            
+            /* Status badges */
+            .status-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+            .status-tersimpan { background: #f1f5f9; color: #475569; }
+            .status-pending { background: #fef3c7; color: #92400e; }
+            .status-disetujui { background: #dcfce7; color: #166534; }
+            .status-ditolak { background: #fee2e2; color: #991b1b; }
+            
+            /* Tab Cards */
+            .dashboard-cards {
+                display: flex; gap: 24px; margin-bottom: 30px;
+            }
+            .stat-card {
+                flex: 1; padding: 24px; border-radius: 16px; position: relative; overflow: hidden;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); text-decoration: none; display: block;
+                transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid transparent;
+            }
+            .stat-card:hover { transform: translateY(-4px); box-shadow: 0 15px 25px -5px rgba(0,0,0,0.1); }
+            
+            .stat-card.active { border-color: rgba(255,255,255,0.5); }
+            
+            .card-outstanding {
+                background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            }
+            .card-outstanding .stat-title, .card-outstanding .stat-value, .card-outstanding .stat-icon {
+                color: #b45309;
+            }
+            
+            .card-history {
+                background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            }
+            .card-history .stat-title, .card-history .stat-value, .card-history .stat-icon {
+                color: #0369a1;
+            }
+
+            .stat-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+            .stat-value { font-size: 32px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 12px; }
+            .stat-icon { width: 32px; height: 32px; }
+            
+            /* Background decorative shapes */
+            .card-bg-shape {
+                position: absolute; right: -20px; bottom: -20px; width: 150px; height: 150px;
+                background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+                border-radius: 50%;
+            }
+            .card-dots {
+                position: absolute; right: 20px; top: 20px; display: grid; grid-template-columns: repeat(3, 4px);
+                gap: 4px; opacity: 0.3;
+            }
+            .card-dots div { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+            
+            /* Modal Styles */
+            .modal-overlay {
+                display: flex; opacity: 0; visibility: hidden; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .modal-overlay.active { opacity: 1; visibility: visible; }
+            .modal-content {
+                background: white; border-radius: 12px; width: 100%; max-width: 500px; padding: 24px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: scale(0.95) translateY(10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
+            
+            .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
+            .modal-header h3 { margin: 0; color: #1e293b; font-size: 18px; }
+            .modal-close { background: none; border: none; font-size: 24px; cursor: pointer; color: #64748b; }
+            
+            .detail-row { display: flex; margin-bottom: 12px; font-size: 14px; }
+            .detail-label { width: 140px; color: #64748b; font-weight: 500; }
+            .detail-value { flex: 1; color: #1e293b; font-weight: 600; }
+        </style>
+        
+        <h1 class="page-title">Approval Dashboard</h1>
+
+        <div th:if="${error}" style="background: #fee2e2; color: #991b1b; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+            <span th:text="${error}"></span>
+        </div>
+        <div th:if="${success}" style="background: #dcfce7; color: #166534; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+            <span th:text="${success}"></span>
+        </div>
+
+        <div class="dashboard-cards">
+            <a th:href="@{/cuti/persetujuan(tab='pending')}" class="stat-card card-outstanding" th:classappend="${activeTab == 'pending' ? 'active' : ''}">
+                <div class="card-bg-shape"></div>
+                <div class="card-dots"><div th:each="i : ${#numbers.sequence(1,9)}"></div></div>
+                <div class="stat-title">Pengajuan Cuti</div>
+                <div class="stat-value">
+                    <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    <span th:text="${pendingCount}">0</span>
+                </div>
+            </a>
+            
+            <a th:href="@{/cuti/persetujuan(tab='history')}" class="stat-card card-history" th:classappend="${activeTab == 'history' ? 'active' : ''}">
+                <div class="card-bg-shape"></div>
+                <div class="card-dots"><div th:each="i : ${#numbers.sequence(1,9)}"></div></div>
+                <div class="stat-title">Riwayat Persetujuan</div>
+                <div class="stat-value">
+                    <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span th:text="${historyCount}">0</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="header-flex">
+                <h3 class="card-title" style="margin: 0;" th:text="${activeTab == 'pending' ? 'Daftar Pengajuan Menunggu Persetujuan' : 'Riwayat Persetujuan Anda'}">Daftar Pengajuan</h3>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>NAMA (NIK)</th>
+                            <th>TIPE CUTI</th>
+                            <th>TANGGAL</th>
+                            <th>HARI</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="hist : ${pengajuanList}">
+                            <td>
+                                <div style="font-weight: 600; color: #0f766e;" th:text="${hist.cuti.user.name}">Nama</div>
+                                <div style="font-size: 12px; color: #64748b;" th:text="${hist.cuti.user.nik}">NIK</div>
+                            </td>
+                            <td>
+                                <div style="font-weight: 600; font-size: 13px;" th:text="${hist.tipeCuti}">Cuti Tahunan</div>
+                            </td>
+                            <td>
+                                <div th:text="${#temporals.format(hist.tanggalMulai, 'dd MMM yyyy')}">-</div>
+                                <div style="font-size: 12px; color: #64748b;" th:text="'s/d ' + ${#temporals.format(hist.tanggalAkhir, 'dd MMM yyyy')}">-</div>
+                            </td>
+                            <td>
+                                <div th:text="${hist.jumlahHariKalender} + ' Kalender'">-</div>
+                                <div style="color: #64748b; font-size: 13px;" th:text="${hist.jumlahHariKerja} + ' Kerja'">-</div>
+                            </td>
+                            <td>
+                                <span class="status-badge" th:classappend="${hist.status == 'tersimpan' ? 'status-tersimpan' : (hist.status == 'menunggu persetujuan' ? 'status-pending' : (hist.status == 'disetujui' ? 'status-disetujui' : 'status-ditolak'))}" th:text="${#strings.capitalize(hist.status)}">Tersimpan</span>
+                            </td>
+                            <td>
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <button class="btn btn-sm btn-edit" style="background: #0284c7;" 
+                                            th:onclick="showDetail([[${hist.cuti.user.name}]], [[${hist.cuti.user.nik}]], [[${hist.tipeCuti}]], [[${hist.alasanAbsen}]], [[${hist.pendelegasianPekerjaan}]], [[${hist.cuti.jenis}]], [[${hist.cuti.sisaHari}]], [[${hist.jumlahHariKalender}]], [[${hist.jumlahHariKerja}]], [[${hist.alasanPenolakan}]], [[${hist.status}]])">
+                                        Lihat Detail
+                                    </button>
+                                    
+                                    <th:block th:if="${activeTab == 'pending'}">
+                                        <button class="btn btn-sm btn-edit" style="background: #16a34a;" th:onclick="openConfirmModal([[${hist.id}]], 'accept')">Terima</button>
+                                        <button class="btn btn-sm btn-delete" th:onclick="openConfirmModal([[${hist.id}]], 'reject')">Tolak</button>
+                                    </th:block>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr th:if="${pengajuanList == null or pengajuanList.isEmpty()}">
+                            <td colspan="6" style="text-align: center; color: #94a3b8; padding: 30px;">Tidak ada data pengajuan cuti.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Hidden Form -->
+        <form id="actionForm" th:action="@{/cuti/persetujuan/process}" method="post" style="display: none;">
+            <input type="hidden" name="id" id="actionId">
+            <input type="hidden" name="action" id="actionType">
+            <input type="hidden" name="alasanPenolakan" id="actionAlasan">
+        </form>
+
+        <!-- Detail Modal -->
+        <div id="detailModal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Detail Pengajuan Cuti</h3>
+                    <button class="modal-close" onclick="closeDetailModal()">&times;</button>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Pemohon</div>
+                    <div class="detail-value" id="detNama">-</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Jenis Cuti</div>
+                    <div class="detail-value" id="detTipe">-</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Alasan Absen</div>
+                    <div class="detail-value" id="detAlasan">-</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Pendelegasian</div>
+                    <div class="detail-value" id="detPendelegasian">-</div>
+                </div>
+                
+                <div class="detail-row" id="detAlasanTolakRow" style="display: none; color: #dc2626; border-top: 1px dashed #cbd5e1; padding-top: 15px; margin-top: 15px;">
+                    <div class="detail-label" style="color: #dc2626;">Alasan Ditolak</div>
+                    <div class="detail-value" id="detAlasanTolak">-</div>
+                </div>
+                
+                <div id="detSisaBaruGroup" style="margin: 20px 0; border-top: 1px dashed #cbd5e1; padding-top: 15px;">
+                    <div class="detail-row" style="color: #0369a1; font-weight: 700;">
+                        <div class="detail-label" style="color: #0369a1;">Sisa Saldo Baru</div>
+                        <div class="detail-value" id="detSisaBaru">-</div>
+                    </div>
+                    <div style="font-size: 12px; color: #64748b; margin-top: 4px;">* Jika pengajuan ini disetujui.</div>
+                </div>
+                
+                <button type="button" class="btn btn-primary" style="width: 100%;" onclick="closeDetailModal()">Tutup</button>
+            </div>
+        </div>
+
+        <!-- Confirm Modal (Accept/Reject) -->
+        <div id="confirmModal" class="modal-overlay">
+            <div class="modal-content" style="max-width: 400px; text-align: center;">
+                <div id="confirmIconAccept" style="color: #16a34a; margin-bottom: 15px; display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div id="confirmIconReject" style="color: #dc2626; margin-bottom: 15px; display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                </div>
+                
+                <h3 id="confirmTitle" style="margin: 0 0 10px 0; color: #1e293b; font-size: 20px;">Konfirmasi</h3>
+                <p id="confirmDesc" style="color: #475569; margin: 0 0 20px 0; font-size: 14px;"></p>
+                
+                <div id="rejectReasonGroup" style="display: none; text-align: left; margin-bottom: 20px;">
+                    <label style="display: block; font-size: 13px; font-weight: 500; color: #475569; margin-bottom: 5px;">Alasan Penolakan <span style="color: #dc2626;">*</span></label>
+                    <textarea id="rejectReasonInput" class="form-control" rows="3" placeholder="Tuliskan alasan..."></textarea>
+                    <div id="rejectError" style="color: #dc2626; font-size: 12px; margin-top: 5px; display: none;">Alasan penolakan wajib diisi.</div>
+                </div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <button type="button" class="btn" style="background: #f1f5f9; color: #475569; flex: 1;" onclick="closeConfirmModal()">Batal</button>
+                    <button type="button" id="confirmBtn" class="btn btn-primary" style="flex: 1;" onclick="submitAction()">Ya, Lanjutkan</button>
+                </div>
+            </div>
+        </div>
+
+        <script th:inline="javascript">
+            function showDetail(nama, nik, tipeCuti, alasan, delegasi, cutiJenis, sisaHariDb, jumlahKalender, jumlahKerja, alasanPenolakan, status) {
+                document.getElementById('detNama').innerText = nama + " (" + nik + ")";
+                document.getElementById('detTipe').innerText = tipeCuti;
+                document.getElementById('detAlasan').innerText = alasan;
+                document.getElementById('detPendelegasian').innerText = delegasi;
+                
+                if (status === 'ditolak') {
+                    document.getElementById('detAlasanTolakRow').style.display = 'flex';
+                    document.getElementById('detAlasanTolak').innerText = alasanPenolakan || '-';
+                    document.getElementById('detSisaBaruGroup').style.display = 'none';
+                } else {
+                    document.getElementById('detAlasanTolakRow').style.display = 'none';
+                    document.getElementById('detSisaBaruGroup').style.display = 'block';
+                    var deducted = (cutiJenis === 'Cuti Besar') ? jumlahKalender : jumlahKerja;
+                    var typeStr = (cutiJenis === 'Cuti Besar') ? ' Hari Kalender' : ' Hari Kerja';
+                    document.getElementById('detSisaBaru').innerText = sisaHariDb + typeStr;
+                }
+                
+                document.getElementById('detailModal').classList.add('active');
+            }
+            function closeDetailModal() { document.getElementById('detailModal').classList.remove('active'); }
+            
+            function openConfirmModal(id, actionType) {
+                document.getElementById('actionId').value = id;
+                document.getElementById('actionType').value = actionType;
+                
+                document.getElementById('rejectReasonInput').value = "";
+                document.getElementById('rejectError').style.display = "none";
+                
+                var isAccept = (actionType === 'accept');
+                
+                document.getElementById('confirmIconAccept').style.display = isAccept ? 'block' : 'none';
+                document.getElementById('confirmIconReject').style.display = !isAccept ? 'block' : 'none';
+                
+                document.getElementById('confirmTitle').innerText = isAccept ? "Setujui Cuti" : "Tolak Cuti";
+                document.getElementById('confirmDesc').innerText = isAccept 
+                    ? "Apakah Anda yakin ingin menyetujui pengajuan cuti ini?" 
+                    : "Apakah Anda yakin ingin menolak pengajuan cuti ini? Mohon berikan alasan.";
+                
+                document.getElementById('rejectReasonGroup').style.display = isAccept ? 'none' : 'block';
+                
+                var btn = document.getElementById('confirmBtn');
+                btn.style.backgroundColor = isAccept ? "#16a34a" : "#dc2626";
+                btn.innerText = isAccept ? "Ya, Setujui" : "Ya, Tolak";
+                
+                document.getElementById('confirmModal').classList.add('active');
+            }
+            function closeConfirmModal() { document.getElementById('confirmModal').classList.remove('active'); }
+            
+            function submitAction() {
+                var actionType = document.getElementById('actionType').value;
+                if (actionType === 'reject') {
+                    var reason = document.getElementById('rejectReasonInput').value.trim();
+                    if (!reason) {
+                        document.getElementById('rejectError').style.display = "block";
+                        return;
+                    }
+                    document.getElementById('actionAlasan').value = reason;
+                }
+                document.getElementById('actionForm').submit();
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>

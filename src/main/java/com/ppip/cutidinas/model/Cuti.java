@@ -19,10 +19,15 @@ public class Cuti {
     private Long id;
     
     private String badgeid;
+    
+    @ManyToOne
+    @JoinColumn(name = "badgeid", insertable = false, updatable = false)
+    private User user;
     private String jenis;
     private Integer periode;
     private LocalDate tanggalMulai;
     private LocalDate tanggalAkhir;
-    private Integer totalHari;
-    private Integer sisaHari;
+    private Integer totalHari = 0;
+    private Integer sisaHari = 0;
+    private Integer kuotaPending = 0;
 }
