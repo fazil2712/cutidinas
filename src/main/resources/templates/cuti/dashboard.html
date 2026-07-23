@@ -130,10 +130,10 @@
             </div>
         </div>
 
-        <!-- ===== SALDO ABSEN ===== -->
+        <!-- ===== SALDO CUTI ===== -->
         <div class="card">
             <h3 class="card-title">
-                Saldo Absen Anda Tahun <span th:text="${tahun}">2026</span>
+                Saldo Cuti Anda Tahun <span th:text="${tahun}">2026</span>
             </h3>
 
             <div th:if="${saldoList != null and !saldoList.isEmpty()}">
@@ -141,7 +141,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Jenis Absen</th>
+                                <th>Jenis Cuti</th>
                                 <th>Periode</th>
                                 <th>Total Kuota</th>
                                 <th>Kuota Terpakai</th>
@@ -178,13 +178,13 @@
                     <line x1="8" y1="2" x2="8" y2="6"/>
                     <line x1="3" y1="10" x2="21" y2="10"/>
                 </svg>
-                <p>Tidak ada data saldo absen untuk tahun ini.</p>
+                <p>Tidak ada data saldo cuti untuk tahun ini.</p>
             </div>
         </div>
 
         <!-- ===== PENGERTIAN STATUS ===== -->
         <div class="card">
-            <h3 class="card-title">Pengertian Status pada Sistem Manajemen Absen</h3>
+            <h3 class="card-title">Pengertian Status pada Sistem Manajemen Cuti</h3>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -196,23 +196,23 @@
                     <tbody>
                         <tr>
                             <td><span class="status-badge status-pending">Menunggu Persetujuan</span></td>
-                            <td>Pengajuan Absen telah diajukan dan menunggu di approve oleh atasan</td>
+                            <td>Pengajuan Cuti telah diajukan dan menunggu di approve oleh atasan</td>
                         </tr>
                         <tr>
                             <td><span class="status-badge status-draft">Tersimpan</span></td>
-                            <td>Pengajuan Absen belum diajukan secara resmi kepada atasan</td>
+                            <td>Pengajuan Cuti belum diajukan secara resmi kepada atasan</td>
                         </tr>
                         <tr>
                             <td><span class="status-badge status-approved">Disetujui</span></td>
-                            <td>Pengajuan Absen sudah di Setujui oleh atasan</td>
+                            <td>Pengajuan Cuti sudah di Setujui oleh atasan</td>
                         </tr>
                         <tr>
                             <td><span class="status-badge status-rejected">Ditolak</span></td>
-                            <td>Pengajuan Absen sudah Ditolak oleh atasan</td>
+                            <td>Pengajuan Cuti sudah Ditolak oleh atasan</td>
                         </tr>
                         <tr>
                             <td><span class="status-badge status-cancelled">Dibatalkan</span></td>
-                            <td>Pengajuan Absen dibatalkan oleh Pengaju</td>
+                            <td>Pengajuan Cuti dibatalkan oleh Pengaju</td>
                         </tr>
                     </tbody>
                 </table>

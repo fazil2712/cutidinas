@@ -18,9 +18,10 @@ import java.time.LocalDate;
 public class HolidayService {
 
     private final HolidayRepository holidayRepository;
-    private static final String ID_HOLIDAY_URL = "https://calendar.google.com/calendar/ical/en.indonesian%23holiday%40group.v.calendar.google.com/public/basic.ics";
+    private static final String ID_HOLIDAY_URL = "https://calendar.google.com/calendar/ical/id.indonesian%23holiday%40group.v.calendar.google.com/public/basic.ics";
 
-    public void syncIndonesianHolidays() {
+    public int syncIndonesianHolidays() {
+        int addedCount = 0;
         try {
             URL url = new URL(ID_HOLIDAY_URL);
             try (InputStream is = url.openStream()) {
@@ -51,6 +52,7 @@ public class HolidayService {
                                             holiday.setDate(localDate);
                                             holiday.setDescription(summaryText);
                                             holidayRepository.save(holiday);
+                                            addedCount++;
                                         }
                                     }
                                 } catch (Exception e) {
@@ -65,5 +67,6 @@ public class HolidayService {
             e.printStackTrace();
             throw new RuntimeException("Failed to sync holidays from Google Calendar: " + e.getMessage());
         }
+        return addedCount;
     }
 }

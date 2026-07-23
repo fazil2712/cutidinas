@@ -63,8 +63,8 @@ public class HolidayController {
     @PostMapping("/sync")
     public String syncHolidays(RedirectAttributes redirectAttributes) {
         try {
-            holidayService.syncIndonesianHolidays();
-            redirectAttributes.addFlashAttribute("success", "Hari libur berhasil disinkronisasi dengan Google Calendar!");
+            int count = holidayService.syncIndonesianHolidays();
+            redirectAttributes.addFlashAttribute("success", "Berhasil mensinkronisasi " + count + " hari libur baru dengan Google Calendar!");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Gagal melakukan sinkronisasi: " + e.getMessage());
         }
