@@ -20,11 +20,20 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        CustomUserDetails.setUserRepository(userRepository);
         // Find by badgeid or name
         User user = userRepository.findByBadgeidOrName(username, username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with badge ID or name: " + username));
 
-        List<SimpleGrantedAuthority> authorities = user.getPermissions().stream()
+        java.util.Set<String> permSet = new java.util.HashSet<>(user.getPermissions());
+        if (permSet.contains("ROLE_ADMIN")) {
+            permSet.add("PERM_ADMIN_PANEL");
+            permSet.add("PERM_PERSETUJUAN_CUTI");
+            permSet.add("PERM_KELOLA_PENGAJUAN");
+            permSet.add("PERM_KELOLA_HARI_LIBUR");
+        }
+
+        List<SimpleGrantedAuthority> authorities = permSet.stream()
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
 

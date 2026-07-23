@@ -14,9 +14,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 @Controller
 @RequestMapping("/admin/holidays")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ADMIN') or hasAuthority('PERM_KELOLA_HARI_LIBUR')")
 public class HolidayController {
 
     private final HolidayRepository holidayRepository;

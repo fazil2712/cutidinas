@@ -18,7 +18,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/cuti/persetujuan")
 @RequiredArgsConstructor
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('ADMIN') or hasAuthority('PERM_PERSETUJUAN_CUTI')")
 public class PersetujuanCutiController {
 
     private final PengajuanCutiRepository pengajuanCutiRepository;

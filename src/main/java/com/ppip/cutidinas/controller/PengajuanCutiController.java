@@ -55,6 +55,15 @@ public class PengajuanCutiController {
         model.addAttribute("userNik", user != null ? user.getNik() : "");
         model.addAttribute("newPengajuan", new PengajuanCuti());
         
+        java.util.Map<String, String> userNames = new java.util.HashMap<>();
+        for (User u : userRepository.findAll()) {
+            if (u.getBadgeid() != null) {
+                String name = u.getName() != null ? u.getName() : u.getBadgeid();
+                userNames.put(u.getBadgeid(), name + " (" + u.getBadgeid() + ")");
+            }
+        }
+        model.addAttribute("userNames", userNames);
+        
         session.setAttribute("currentModule", "cuti");
         
         return "cuti/pengajuan";
@@ -62,6 +71,7 @@ public class PengajuanCutiController {
 
     @PostMapping("/add")
     public String addPengajuan(@ModelAttribute("newPengajuan") PengajuanCuti pengajuan,
+                               @org.springframework.web.bind.annotation.RequestParam(value = "file", required = false) org.springframework.web.multipart.MultipartFile file,
                                @AuthenticationPrincipal CustomUserDetails userDetails,
                                RedirectAttributes redirectAttributes) {
                                
@@ -113,6 +123,33 @@ public class PengajuanCutiController {
 
         pengajuan.setCuti(activeCuti);
         pengajuan.setStatus("tersimpan");
+        
+        if (file != null && !file.isEmpty()) {
+            if (!"application/pdf".equals(file.getContentType()) && (file.getOriginalFilename() == null || !file.getOriginalFilename().toLowerCase().endsWith(".pdf"))) {
+                redirectAttributes.addFlashAttribute("error", "File pendukung harus berupa PDF.");
+                return "redirect:/cuti/pengajuan";
+            }
+            if (file.getSize() > 50 * 1024 * 1024) {
+                redirectAttributes.addFlashAttribute("error", "Ukuran file maksimal 50MB.");
+                return "redirect:/cuti/pengajuan";
+            }
+            try {
+                String originalFilename = org.springframework.util.StringUtils.cleanPath(file.getOriginalFilename());
+                // Prefix with timestamp to prevent overwriting, but keep original name readable
+                String savedFilename = System.currentTimeMillis() + "_" + originalFilename;
+                java.nio.file.Path uploadPath = java.nio.file.Paths.get("uploads").toAbsolutePath().normalize();
+                if (!java.nio.file.Files.exists(uploadPath)) {
+                    java.nio.file.Files.createDirectories(uploadPath);
+                }
+                java.nio.file.Path filePath = uploadPath.resolve(savedFilename);
+                java.nio.file.Files.copy(file.getInputStream(), filePath, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                pengajuan.setFilePendukung(savedFilename);
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error", "Gagal mengunggah file pendukung.");
+                return "redirect:/cuti/pengajuan";
+            }
+        }
+
         pengajuanCutiRepository.save(pengajuan);
 
         redirectAttributes.addFlashAttribute("success", "Pengajuan cuti berhasil disimpan.");
@@ -149,6 +186,7 @@ public class PengajuanCutiController {
                 cutiRepository.save(cuti);
                 
                 pengajuan.setStatus("dibatalkan");
+                pengajuan.setApproverBadgeid(userDetails.getBadgeId());
                 pengajuanCutiRepository.save(pengajuan);
                 redirectAttributes.addFlashAttribute("success", "Pengajuan cuti berhasil dibatalkan.");
             } else {

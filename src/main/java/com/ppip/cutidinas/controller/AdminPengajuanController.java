@@ -19,7 +19,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin/pengajuan")
 @RequiredArgsConstructor
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('ADMIN') or hasAuthority('PERM_KELOLA_PENGAJUAN')")
 public class AdminPengajuanController {
 
     private final PengajuanCutiRepository pengajuanCutiRepository;
@@ -41,6 +41,7 @@ public class AdminPengajuanController {
                                 @RequestParam("alasanAbsen") String alasanAbsen,
                                 @RequestParam("tipeCuti") String tipeCuti,
                                 @RequestParam("status") String status,
+                                @org.springframework.security.core.annotation.AuthenticationPrincipal com.ppip.cutidinas.security.CustomUserDetails userDetails,
                                 RedirectAttributes redirectAttributes) {
 
         PengajuanCuti pengajuan = pengajuanCutiRepository.findById(id).orElse(null);
@@ -108,6 +109,9 @@ public class AdminPengajuanController {
         pengajuan.setAlasanAbsen(alasanAbsen);
         pengajuan.setTipeCuti(tipeCuti);
         pengajuan.setStatus(status);
+        if (userDetails != null) {
+            pengajuan.setApproverBadgeid(userDetails.getBadgeId());
+        }
 
         pengajuanCutiRepository.save(pengajuan);
 

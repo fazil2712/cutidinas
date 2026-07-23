@@ -152,7 +152,7 @@
                             <td>
                                 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                                     <button class="btn btn-sm btn-edit" style="background: #0284c7;" 
-                                            th:onclick="showDetail([[${hist.cuti.user.name}]], [[${hist.cuti.user.nik}]], [[${hist.tipeCuti}]], [[${hist.alasanAbsen}]], [[${hist.pendelegasianPekerjaan}]], [[${hist.cuti.jenis}]], [[${hist.cuti.sisaHari}]], [[${hist.jumlahHariKalender}]], [[${hist.jumlahHariKerja}]], [[${hist.alasanPenolakan}]], [[${hist.status}]])">
+                                            th:onclick="showDetail([[${hist.cuti.user.name}]], [[${hist.cuti.user.nik}]], [[${hist.tipeCuti}]], [[${hist.alasanAbsen}]], [[${hist.pendelegasianPekerjaan}]], [[${hist.cuti.jenis}]], [[${hist.cuti.sisaHari}]], [[${hist.jumlahHariKalender}]], [[${hist.jumlahHariKerja}]], [[${hist.alasanPenolakan}]], [[${hist.status}]], [[${hist.filePendukung}]])">
                                         Lihat Detail
                                     </button>
                                     
@@ -203,6 +203,16 @@
                     <div class="detail-value" id="detPendelegasian">-</div>
                 </div>
                 
+                <div class="detail-row" id="detFileRow" style="display: none; align-items: center;">
+                    <div class="detail-label">File Pendukung</div>
+                    <div class="detail-value">
+                        <a id="detFileLink" href="#" target="_blank" class="btn btn-sm" style="background: #e0f2fe; color: #0369a1; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 13px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            Unduh File
+                        </a>
+                    </div>
+                </div>
+                
                 <div class="detail-row" id="detAlasanTolakRow" style="display: none; color: #dc2626; border-top: 1px dashed #cbd5e1; padding-top: 15px; margin-top: 15px;">
                     <div class="detail-label" style="color: #dc2626;">Alasan Ditolak</div>
                     <div class="detail-value" id="detAlasanTolak">-</div>
@@ -247,11 +257,18 @@
         </div>
 
         <script th:inline="javascript">
-            function showDetail(nama, nik, tipeCuti, alasan, delegasi, cutiJenis, sisaHariDb, jumlahKalender, jumlahKerja, alasanPenolakan, status) {
+            function showDetail(nama, nik, tipeCuti, alasan, delegasi, cutiJenis, sisaHariDb, jumlahKalender, jumlahKerja, alasanPenolakan, status, filePendukung) {
                 document.getElementById('detNama').innerText = nama + " (" + nik + ")";
                 document.getElementById('detTipe').innerText = tipeCuti;
                 document.getElementById('detAlasan').innerText = alasan;
                 document.getElementById('detPendelegasian').innerText = delegasi;
+                
+                if (filePendukung) {
+                    document.getElementById('detFileRow').style.display = 'flex';
+                    document.getElementById('detFileLink').href = '/uploads/' + filePendukung;
+                } else {
+                    document.getElementById('detFileRow').style.display = 'none';
+                }
                 
                 if (status === 'ditolak') {
                     document.getElementById('detAlasanTolakRow').style.display = 'flex';

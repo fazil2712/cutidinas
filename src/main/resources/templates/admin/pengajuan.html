@@ -147,8 +147,11 @@
                             </td>
                             <td>
                                 <div style="display: flex; gap: 8px;">
-                                    <button class="btn btn-sm btn-edit" th:onclick="openEditModal([[${hist.id}]], [[${hist.tanggalMulai}]], [[${hist.tanggalAkhir}]], [[${hist.pendelegasianPekerjaan}]], [[${hist.alasanAbsen}]], [[${hist.tipeCuti}]], [[${hist.status}]], [[${hist.cuti.jenis}]], [[${hist.cuti.sisaHari}]], [[${hist.cuti.kuotaPending}]], [[${hist.jumlahHariKalender}]], [[${hist.jumlahHariKerja}]])">Edit</button>
-                                    <button class="btn btn-sm btn-delete" th:onclick="confirmDelete([[${hist.id}]])">Delete</button>
+                                    <button class="btn btn-sm btn-edit" style="background: #0284c7;" 
+                                            th:onclick="openEditModal([[${hist.id}]], [[${hist.tanggalMulai}]], [[${hist.tanggalAkhir}]], [[${hist.pendelegasianPekerjaan}]], [[${hist.alasanAbsen}]], [[${hist.tipeCuti}]], [[${hist.status}]], [[${hist.cuti.jenis}]], [[${hist.cuti.sisaHari}]], [[${hist.cuti.kuotaPending}]], [[${hist.jumlahHariKalender}]], [[${hist.jumlahHariKerja}]], [[${hist.filePendukung}]])">
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-sm btn-delete" th:onclick="openConfirmModal([[${hist.id}]])">Hapus</button>
                                 </div>
                             </td>
                         </tr>
@@ -193,10 +196,10 @@
                     <div class="form-group">
                         <label>Jenis Cuti</label>
                         <select name="tipeCuti" id="editTipeCuti" class="form-control" required>
-                            <option value="01 Tahunan">01 Tahunan</option>
-                            <option value="02 Menikah">02 Menikah</option>
-                            <option value="03 Keluarga Meninggal">03 Keluarga Meninggal</option>
-                            <option value="04 Lain-lain">04 Lain-lain</option>
+                            <option value="Tahunan">Tahunan</option>
+                            <option value="Menikah">Menikah</option>
+                            <option value="Keluarga Meninggal">Keluarga Meninggal</option>
+                            <option value="Lain-lain">Lain-lain</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -319,6 +322,12 @@
                 document.getElementById('customConfirmModal').classList.remove('active');
             }
             
+            function openConfirmModal(id) {
+                currentEditActionType = 'delete';
+                document.getElementById('deleteId').value = id;
+                showCustomConfirm("Apakah Anda yakin ingin menghapus data ini? Saldo cuti akan dikembalikan ke pengguna.");
+            }
+            
             function proceedAction() {
                 if (currentEditActionType === 'delete') {
                     document.getElementById('deleteForm').submit();
@@ -328,13 +337,7 @@
                 }
             }
 
-            function confirmDelete(id) {
-                currentEditActionType = 'delete';
-                document.getElementById('deleteId').value = id;
-                showCustomConfirm("Apakah Anda yakin ingin menghapus data ini? Saldo cuti akan dikembalikan ke pengguna.");
-            }
-
-            function openEditModal(id, tm, ta, pendelegasian, alasan, tipeCuti, status, cutiJenis, sisaHari, kuotaPending, oldKalender, oldKerja) {
+            function openEditModal(id, tm, ta, pendelegasian, alasan, tipeCuti, status, cutiJenis, sisaHari, kuotaPending, oldKalender, oldKerja, filePendukung) {
                 document.getElementById('editId').value = id;
                 document.getElementById('editTanggalMulai').value = tm;
                 document.getElementById('editTanggalAkhir').value = ta;
@@ -348,9 +351,25 @@
                 
                 currentEditCutiJenis = cutiJenis;
                 
-                // Real Sisa Hari if we revert this specific request
                 var oldDeducted = (cutiJenis === 'Cuti Besar') ? oldKalender : oldKerja;
                 currentEditSisaHari = sisaHari + oldDeducted;
+                
+                var fileRow = document.getElementById('editFileRow');
+                if (!fileRow) {
+                    fileRow = document.createElement('div');
+                    fileRow.id = 'editFileRow';
+                    fileRow.className = 'form-group';
+                    fileRow.innerHTML = '<label>File Pendukung</label><br><a id="editFileLink" href="#" target="_blank" class="btn btn-sm" style="background: #e0f2fe; color: #0369a1; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 13px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Unduh File</a>';
+                    var form = document.getElementById('editForm');
+                    form.insertBefore(fileRow, form.children[form.children.length - 2]); // Insert before status
+                }
+                
+                if (filePendukung) {
+                    fileRow.style.display = 'block';
+                    document.getElementById('editFileLink').href = '/uploads/' + filePendukung;
+                } else {
+                    fileRow.style.display = 'none';
+                }
 
                 document.getElementById('editModal').classList.add('active');
             }

@@ -47,27 +47,26 @@
                 <a th:href="@{/cuti/pengajuan}" class="nav-item" th:classappend="${activeMenu == 'pengajuancuti'} ? 'active'">
                     Pengajuan Cuti
                 </a>
-                <!-- Role check can be implemented here if you introduce ROLE_APPROVER, for now it's fine -->
-                <a th:href="@{/cuti/persetujuan}" class="nav-item" th:classappend="${activeMenu == 'persetujuan_cuti'} ? 'active'">
+                <a th:href="@{/cuti/persetujuan}" sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'PERM_PERSETUJUAN_CUTI')" class="nav-item" th:classappend="${activeMenu == 'persetujuan_cuti'} ? 'active'">
                     Persetujuan Cuti
                 </a>
             </th:block>
             
-            <!-- Admin Panel: ADMIN only -->
-            <div sec:authorize="hasRole('ADMIN')">
+            <!-- Admin / Permission Settings -->
+            <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'PERM_ADMIN_PANEL', 'PERM_KELOLA_PENGAJUAN', 'PERM_KELOLA_HARI_LIBUR')">
                 <div class="nav-section">PENGATURAN</div>
-                <a th:href="@{/admin/users}" class="nav-item" th:classappend="${activeMenu == 'admin'} ? 'active'">
+                <a th:href="@{/admin/users}" sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'PERM_ADMIN_PANEL')" class="nav-item" th:classappend="${activeMenu == 'admin'} ? 'active'">
                     Admin Panel
                 </a>
                 <th:block th:if="${session.currentModule == 'cuti'}">
-                    <a th:href="@{/admin/pengajuan}" class="nav-item" th:classappend="${activeMenu == 'admin_pengajuan'} ? 'active'">
+                    <a th:href="@{/admin/pengajuan}" sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'PERM_KELOLA_PENGAJUAN')" class="nav-item" th:classappend="${activeMenu == 'admin_pengajuan'} ? 'active'">
                         Kelola Pengajuan Cuti
                     </a>
-                    <a th:href="@{/admin/holidays}" class="nav-item" th:classappend="${activeMenu == 'admin_holidays'} ? 'active'">
+                    <a th:href="@{/admin/holidays}" sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'PERM_KELOLA_HARI_LIBUR')" class="nav-item" th:classappend="${activeMenu == 'admin_holidays'} ? 'active'">
                         Kelola Hari Libur
                     </a>
                 </th:block>
-            </div>
+            </th:block>
             
             <div style="margin-top: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
                 <a th:if="${session.currentModule != null and session.currentModule != 'main'}" th:href="@{/}" class="btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; text-align: center; border-radius: 8px; padding: 12px; font-size: 14px; font-weight: 600; cursor: pointer; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; text-decoration: none; box-sizing: border-box;">

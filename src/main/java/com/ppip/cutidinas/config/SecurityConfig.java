@@ -10,8 +10,11 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.ppip.cutidinas.security.CustomAuthenticationSuccessHandler;
 
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final CustomAuthenticationSuccessHandler successHandler;

@@ -33,6 +33,9 @@
             }
             .status-tersimpan { background: #f1f5f9; color: #475569; }
             .status-pending { background: #fef3c7; color: #92400e; }
+            .status-disetujui { background: #dcfce7; color: #166534; }
+            .status-ditolak { background: #fee2e2; color: #991b1b; }
+            .status-dibatalkan { background: #f3f4f6; color: #6b7280; }
             
             /* Modal Styles */
             .modal-overlay {
@@ -179,8 +182,15 @@
                                 <div style="color: #64748b; font-size: 13px;" th:text="${hist.jumlahHariKerja} + ' Hari Kerja'">-</div>
                             </td>
                             <td>
-                                <span class="status-badge" th:classappend="${hist.status == 'tersimpan' ? 'status-tersimpan' : (hist.status == 'menunggu persetujuan' ? 'status-pending' : (hist.status == 'disetujui' ? 'status-disetujui' : 'status-ditolak'))}" th:text="${#strings.capitalize(hist.status)}">Tersimpan</span>
+                                <span class="status-badge" th:classappend="${hist.status == 'tersimpan' ? 'status-tersimpan' : (hist.status == 'menunggu persetujuan' ? 'status-pending' : (hist.status == 'disetujui' ? 'status-disetujui' : (hist.status == 'dibatalkan' ? 'status-dibatalkan' : 'status-ditolak')))}" th:text="${hist.status != null ? #strings.capitalize(hist.status) : '-'}">Tersimpan</span>
+                                <div th:if="${(hist.status == 'disetujui' or hist.status == 'ditolak' or hist.status == 'dibatalkan') and hist.approverBadgeid != null and userNames != null and userNames.containsKey(hist.approverBadgeid)}" style="margin-top: 4px; font-size: 12px; color: #475569; font-weight: 500;" th:text="'oleh ' + ${userNames[hist.approverBadgeid]}"></div>
                                 <div th:if="${hist.status == 'ditolak'}" style="margin-top: 6px; font-size: 12px; color: #dc2626; font-weight: 500; max-width: 150px; line-height: 1.3;" th:text="'Alasan: ' + (${hist.alasanPenolakan != null ? hist.alasanPenolakan : '-'})"></div>
+                                <div th:if="${hist.filePendukung != null}" style="margin-top: 6px;">
+                                    <a th:href="@{/uploads/{file}(file=${hist.filePendukung})}" target="_blank" style="font-size: 12px; color: #0284c7; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 4px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                        Lihat File
+                                    </a>
+                                </div>
                             </td>
                             <td>
                                 <div style="display: flex; gap: 8px;">
@@ -202,14 +212,14 @@
             </div>
         </div>
 
-        <!-- ===== MODAL AJUKAN ABSEN ===== -->
-        <div id="ajukanModal" class="modal-overlay">
+        <!-- Modal Tambah Pengajuan -->
+        <div id="addModal" class="modal-overlay">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3>Form Pengajuan Cuti</h3>
+                    <h3>Formulir Pengajuan Absen</h3>
                     <button class="modal-close" onclick="closeModal()">&times;</button>
                 </div>
-                <form id="pengajuanForm" th:action="@{/cuti/pengajuan/add}" th:object="${newPengajuan}" method="post" onsubmit="return validateForm(event)">
+                <form id="pengajuanForm" th:action="@{/cuti/pengajuan/add}" th:object="${newPengajuan}" method="post" enctype="multipart/form-data" onsubmit="return validateForm(event)">
                     <div class="form-group">
                         <label>NIK</label>
                         <input type="text" th:value="${userNik}" readonly class="form-control" style="background: #f8fafc; cursor: not-allowed;">
@@ -230,12 +240,16 @@
                         <textarea th:field="*{alasanAbsen}" class="form-control" required placeholder="Alasan pengajuan cuti" rows="3"></textarea>
                     </div>
                     <div class="form-group">
+                        <label>File Pendukung (PDF, maks 50MB) <span style="font-weight: normal; color: #64748b; font-size: 12px;">(Opsional)</span></label>
+                        <input type="file" name="file" id="filePendukung" class="form-control" accept="application/pdf" style="padding: 8px;">
+                    </div>
+                    <div class="form-group">
                         <label>Jenis Cuti</label>
                         <select th:field="*{tipeCuti}" class="form-control" required>
-                            <option value="01 Tahunan">01 Tahunan</option>
-                            <option value="02 Menikah">02 Menikah</option>
-                            <option value="03 Keluarga Meninggal">03 Keluarga Meninggal</option>
-                            <option value="04 Lain-lain">04 Lain-lain</option>
+                            <option value="Tahunan">Tahunan</option>
+                            <option value="Menikah">Menikah</option>
+                            <option value="Keluarga Meninggal">Keluarga Meninggal</option>
+                            <option value="Lain-lain">Lain-lain</option>
                         </select>
                     </div>
                     <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 30px;">
@@ -419,8 +433,20 @@
             }
 
             function validateForm(e) {
-                e.preventDefault();
-                
+                var fileInput = document.getElementById('filePendukung');
+                if (fileInput && fileInput.files.length > 0) {
+                    var file = fileInput.files[0];
+                    if (file.size > 50 * 1024 * 1024) {
+                        e.preventDefault();
+                        showCustomAlert("Ukuran file maksimal adalah 50MB!");
+                        return false;
+                    }
+                    if (file.type !== "application/pdf") {
+                        e.preventDefault();
+                        showCustomAlert("File harus berupa PDF!");
+                        return false;
+                    }
+                }
                 var tm = document.getElementById('tanggalMulai').value;
                 var ta = document.getElementById('tanggalAkhir').value;
                 
@@ -457,11 +483,20 @@
             }
 
             function openModal() {
-                document.getElementById('ajukanModal').classList.add('active');
+                var modal = document.getElementById('addModal') || document.getElementById('ajukanModal');
+                if (modal) modal.classList.add('active');
             }
             function closeModal() {
-                document.getElementById('ajukanModal').classList.remove('active');
+                var modal = document.getElementById('addModal') || document.getElementById('ajukanModal');
+                if (modal) modal.classList.remove('active');
             }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.get('openModal') === 'true') {
+                    openModal();
+                }
+            });
             /*]]>*/
         </script>
 

@@ -18,9 +18,18 @@ public class DataInitializer implements CommandLineRunner {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CutiService cutiService;
+    private final org.springframework.jdbc.core.JdbcTemplate jdbcTemplate;
 
     @Override
     public void run(String... args) throws Exception {
+        try {
+            jdbcTemplate.execute("ALTER TABLE pengajuan_cuti ADD COLUMN IF NOT EXISTS file_pendukung VARCHAR(255)");
+            jdbcTemplate.execute("ALTER TABLE pengajuan_cuti ADD COLUMN IF NOT EXISTS approver_badgeid VARCHAR(255)");
+            jdbcTemplate.execute("ALTER TABLE pengajuan_cuti ADD COLUMN IF NOT EXISTS alasan_penolakan VARCHAR(255)");
+            jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS user_permissions (user_badgeid VARCHAR(255) NOT NULL, permission VARCHAR(255) DEFAULT NULL)");
+        } catch (Exception e) {
+            System.err.println("DB Migration warning: " + e.getMessage());
+        }
         if (userRepository.count() == 0) {
             User admin = new User(
                     "000000",

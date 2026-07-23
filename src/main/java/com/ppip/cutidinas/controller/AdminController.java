@@ -20,9 +20,12 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.UUID;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 @Controller
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ADMIN') or hasAuthority('PERM_ADMIN_PANEL')")
 public class AdminController {
 
     private final UserRepository userRepository;
@@ -130,6 +133,25 @@ public class AdminController {
     public String deleteUser(@PathVariable("id") String badgeid, RedirectAttributes redirectAttributes) {
         userRepository.deleteById(badgeid);
         redirectAttributes.addFlashAttribute("success", "User deleted successfully!");
+        return "redirect:/admin/users";
+    }
+
+    @PostMapping("/users/permissions/{id}")
+    public String updatePermissions(@PathVariable("id") String badgeid,
+                                    @RequestParam(value = "permissions", required = false) java.util.List<String> permissions,
+                                    RedirectAttributes redirectAttributes) {
+        User user = userRepository.findById(badgeid).orElse(null);
+        if (user != null) {
+            if (permissions == null) {
+                permissions = new java.util.ArrayList<>();
+            }
+            if (user.getPermissions() != null && user.getPermissions().contains("ROLE_ADMIN") && !permissions.contains("ROLE_ADMIN")) {
+                permissions.add("ROLE_ADMIN");
+            }
+            user.setPermissions(permissions);
+            userRepository.save(user);
+            redirectAttributes.addFlashAttribute("success", "Perizinan user berhasil diperbarui!");
+        }
         return "redirect:/admin/users";
     }
 

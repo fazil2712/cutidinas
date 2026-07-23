@@ -37,4 +37,6 @@ public class PengajuanCuti {
     private String alasanAbsen;
     private String approverBadgeid;
     private String alasanPenolakan;
+    
+    private String filePendukung;
 }
